@@ -1,0 +1,141 @@
+<style>
+  .product-info {
+    padding: 1rem;
+    border: 1px solid var(--color-border, #e5e5e5);
+    background: #fff7e6;
+    border-radius: 6px;
+    line-height: 1;
+  }
+
+  .product-info__destination {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-info__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .product-info__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    align-items: center;
+    padding-left: 0px !important;
+  }
+
+  .product-info__badges li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0;
+  }
+
+  .badge-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .product-info__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .icon-wrapper svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+
+{% assign days_to_add = block.settings.delivery_start_date %}
+{% assign seconds_to_add_start = days_to_add | times: 86400 %}
+{% assign days_to_add = block.settings.delivery_end_date %}
+{% assign seconds_to_add_end = days_to_add | times: 86400 %}
+
+{% if localization.country.iso_code == block.settings.delivery_country %}
+  <div class="product__info product-info rte">
+    <h3 class="h5">
+      Shipping to: <span class="text-body">{{ localization.country.name }}</span>
+    </h3>
+    <ul class="product-info__list">
+      <li class="product-info__item">
+        <span class="icon-wrapper">
+          {{ 'icon-truck.svg' | inline_asset_content }}
+        </span>
+        <div>
+          <strong>{{ block.settings.si_shipping_text }}</strong><br>
+          <small
+            >Estimated delivery: {{ 'now' | date: '%s' | plus: seconds_to_add_start | date: '%B %d, %Y' }} –
+            {{ 'now' | date: '%s' | plus: seconds_to_add_end | date: '%B %d, %Y' -}}
+          </small>
+        </div>
+      </li>
+      <li class="product-info__item">
+        <span class="icon-wrapper">
+          {{ 'icon-box.svg' | inline_asset_content }}
+        </span>
+        <div>
+          <strong>COD Policy</strong><br>
+          <small>Cash on delivery available. Learn more.</small>
+        </div>
+      </li>
+      <li class="product-info__item">
+        <span class="icon-wrapper">
+          {{ 'icon-return.svg' | inline_asset_content }}
+        </span>
+        <div>
+          <strong>Return Policy</strong><br>
+          <small>Final sale items are non-returnable.</small>
+        </div>
+      </li>
+      <li class="product-info__item">
+        <span class="icon-wrapper">
+          {{ 'icon-lightning-bolt.svg' | inline_asset_content }}
+        </span>
+        <div>
+          <strong>Shopping Security</strong>
+          <ul class="product-info__badges">
+            <li>
+              <span class="badge-icon">{{ 'icon-tick.svg' | inline_asset_content }}</span> Safe Payments
+            </li>
+            <li>
+              <span class="badge-icon">{{ 'icon-tick.svg' | inline_asset_content }}</span> Secure Logistics
+            </li>
+            <li>
+              <span class="badge-icon">{{ 'icon-tick.svg' | inline_asset_content }}</span> Customer Service
+            </li>
+            <li>
+              <span class="badge-icon">{{ 'icon-tick.svg' | inline_asset_content }}</span> Privacy Protection
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+{% endif %}

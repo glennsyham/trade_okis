@@ -356,7 +356,10 @@
                                 </dt>
                                 <dd>
                                   <span class="price-per-item--current">
-                                    {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                    {{-
+                                      'products.product.volume_pricing.price_at_each_html'
+                                      | t: price: variant_price
+                                    -}}
                                   </span>
                                 </dd>
                               </dl>
@@ -660,8 +663,11 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {%- when 'shipping-info' -%}
+                {% render 'shipping-info', block: block %}
             {%- endcase -%}
           {%- endfor -%}
+
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
             {{ 'products.product.view_full_details' | t }}
             {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -1674,7 +1680,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_2.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_2",
@@ -1874,7 +1880,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_3.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_3",
@@ -2072,6 +2078,53 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
+    },
+    {
+      "type": "shipping-info",
+      "name": "Estimated Delivery",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "number",
+          "id": "delivery_start_date",
+          "default": 6,
+          "label": "Start Date"
+        },
+        {
+          "type": "number",
+          "id": "delivery_end_date",
+          "default": 8,
+          "label": "End Date"
+        },
+        {
+          "type": "text",
+          "id": "si_shipping_text",
+          "label": "Shipping Text"
+        },
+        {
+          "type": "select",
+          "id": "delivery_country",
+          "label": "Country",
+          "options": [
+            {
+              "value": "PH",
+              "label": "Philippines"
+            },
+            {
+              "value": "JP",
+              "label": "Japan"
+            },
+            {
+              "value": "SG",
+              "label": "Singapore"
+            },
+            {
+              "value": "US",
+              "label": "United States"
+            }
+          ]
+        }
+      ]
     }
   ],
   "settings": [
@@ -2176,7 +2229,7 @@
       ],
       "default": "hide",
       "label": "t:sections.main-product.settings.mobile_thumbnails.label"
-    },    
+    },
     {
       "type": "select",
       "id": "media_position",
