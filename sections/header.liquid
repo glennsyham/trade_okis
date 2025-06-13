@@ -235,7 +235,62 @@
       {% render 'header-search', input_id: 'Search-In-Modal' %}
 
       {%- if shop.customer_accounts_enabled -%}
-        <a
+          {%- comment -%}
+          This code displays the image associated with a customer's membership tier.
+          
+          - It loads the 'membership' collection and loops through its products.
+          - Each product's title is converted to a tag-friendly format (lowercase, spaces to underscores).
+          - If the customer has a tag that matches a product, it assigns that product’s image (preferably the variant image).
+          - The loop stops after finding the first match.
+          - If a matching membership image is found, it renders the image on the page.
+          
+          Use case: Personalize the storefront by showing the customer's active membership visually.
+          {%- endcomment -%}
+          {% liquid
+            # Get the 'membership' collection by its handle
+            assign membership_collection = collections['membership']
+            
+            # Initialize the variable that will hold the image/media object
+            assign seo_media = blank
+          
+            # Proceed only if the 'membership' collection exists
+            if membership_collection
+              # Loop through each product in the membership collection
+              for membership_product in membership_collection.products
+          
+                # Format the product title to match the expected customer tag format
+                # (e.g., "Gold Membership" → "gold_membership")
+                assign membership_title = membership_product.title
+                assign membership_value = membership_title | downcase | replace: ' ', '_' 
+          
+                # Check if the customer has a tag that matches this membership product
+                if customer.tags contains membership_value
+          
+                  # If the product variant has a featured media, use that as the image
+                  if membership_product.media[1]
+                    assign seo_media = membership_product.media[1]
+                  else
+                    # Otherwise, use the main product image
+                    assign seo_media = membership_product.featured_media
+                  endif
+          
+                  # Break the loop after finding the first valid membership match
+                  break
+                endif
+          
+              endfor
+            endif
+          %}
+          
+          {%- comment -%}
+            If the customer has a membership (based on tag matching a product title),
+            display the corresponding image from that membership product.
+          {%- endcomment -%}
+          
+          {% unless seo_media == blank %}
+            <img src="{{ seo_media | image_url: width: 533 }}" width="{{ section.settings.member_logo_width }}px" height="{{ section.settings.member_logo_height }}px" />
+          {% endunless %}  
+          <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
           class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
           rel="nofollow"
@@ -627,7 +682,20 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 20
+    },
+    {
+      "type": "number",
+      "id": "member_logo_width",
+      "label": "Membership Logo Width",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "member_logo_height",
+      "label": "Membership Logo Height",
+      "default": 50
     }
+        
   ],
   "blocks": [
     {
