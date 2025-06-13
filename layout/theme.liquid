@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
-
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -253,6 +252,13 @@
           font-size: 1.6rem;
         }
       }
+      @media (max-width: 767px) {
+        sticky-header {
+          display: none !important;
+        }
+      }    
+
+        
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -310,7 +316,12 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      {{ content_for_layout }}
+       {% assign sm_show_content = true %} {% include 'simplee-memberships' %}
+                                              {% if sm_show_content %}
+                                                    {{ content_for_layout }}
+                                                {% else %}
+                                                    {%  echo shop.metafields.simplee.restricted %}
+                                                {% endif %}
     </main>
 
     {% sections 'footer-group' %}
