@@ -7,3 +7,4 @@ config/settings_data.json
 sections/pagefly-section.liquid
 snippets/simplee-memberships.liquid
 sections/header-group.context.singapore.json
+sections/footer-group.context.singapore.json
