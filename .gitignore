@@ -4,3 +4,4 @@ config/settings_data.json
 /config
 /config
 config/settings_data.json
+sections/pagefly-section.liquid
