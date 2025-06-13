@@ -1,1 +1,64 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement_MBkkBR":{"type":"announcement","settings":{"text":"Welcome to our store","link":""}},"announcement-bar-0":{"type":"announcement","settings":{"text":"Exclusive Items at your Fingertips","link":""}},"announcement_QFY9Ki":{"type":"announcement","settings":{"text":"Welcome to our store","link":""}}},"block_order":["announcement_MBkkBR","announcement-bar-0","announcement_QFY9Ki"],"settings":{"auto_rotate":false,"change_slides_speed":5,"color_scheme":"scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a","show_line_separator":false,"show_social":false,"enable_country_selector":false,"enable_language_selector":false}},"header":{"type":"header","settings":{"logo_position":"middle-center","mobile_logo_position":"center","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"reduce-logo-size","show_line_separator":true,"color_scheme":"scheme-af237c41-4c89-4187-867b-88f7e47e8d81","menu_color_scheme":"scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a","enable_country_selector":true,"enable_language_selector":true,"enable_customer_avatar":true,"margin_bottom":0,"padding_top":8,"padding_bottom":8}}},"order":["announcement-bar","header"]}
+{
+    "name": "t:sections.header.name",
+    "type": "header",
+    "sections": {
+        "announcement-bar": {
+            "type": "announcement-bar",
+            "blocks": {
+                "announcement_MBkkBR": {
+                    "type": "announcement",
+                    "settings": {
+                        "text": "Welcome to our store",
+                        "link": ""
+                    }
+                },
+                "announcement-bar-0": {
+                    "type": "announcement",
+                    "settings": {
+                        "text": "Exclusive Items at your Fingertips",
+                        "link": ""
+                    }
+                }
+            },
+            "block_order": [
+                "announcement_MBkkBR",
+                "announcement-bar-0"
+            ],
+            "settings": {
+                "auto_rotate": false,
+                "change_slides_speed": 5,
+                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+                "show_line_separator": false,
+                "show_social": false,
+                "enable_country_selector": false,
+                "enable_language_selector": false
+            }
+        },
+        "header": {
+            "type": "header",
+            "custom_css": [],
+            "settings": {
+                "logo_position": "middle-center",
+                "mobile_logo_position": "center",
+                "menu": "main-menu",
+                "menu_type_desktop": "dropdown",
+                "sticky_header_type": "reduce-logo-size",
+                "show_line_separator": true,
+                "color_scheme": "scheme-af237c41-4c89-4187-867b-88f7e47e8d81",
+                "menu_color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+                "enable_country_selector": true,
+                "enable_language_selector": true,
+                "enable_customer_avatar": true,
+                "margin_bottom": 0,
+                "padding_top": 8,
+                "padding_bottom": 8,
+                "member_logo_width": 50,
+                "member_logo_height": 50
+            }
+        }
+    },
+    "order": [
+        "announcement-bar",
+        "header"
+    ]
+}
