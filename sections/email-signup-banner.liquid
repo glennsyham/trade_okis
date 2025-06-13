@@ -59,7 +59,7 @@
     </div>
   {%- endif -%}
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
-    <div class="email-signup-banner__box banner__box newsletter newsletter__wrapper isolate{% if section.settings.show_background_image == false %} email-signup-banner__box--no-image{% endif %} content-container color-{{ section.settings.color_scheme }} gradient content-container--full-width-mobile">
+    <div class="email-signup-banner__box banner__box newsletter newsletter__wrapper isolate{% if section.settings.show_background_image == false %} email-signup-banner__box--no-image{% endif %} content-container color-{{ section.settings.color_scheme }} gradient content-container--full-width-mobile {{ section.settings.linear_bg_class }}">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
@@ -160,7 +160,7 @@
       "id": "show_background_image",
       "label": "t:sections.email-signup-banner.settings.show_background_image.label",
       "default": true
-    },    
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -203,7 +203,7 @@
     {
       "type": "header",
       "content": "t:sections.email-signup-banner.settings.content_header.content"
-    },    
+    },
     {
       "type": "select",
       "id": "desktop_content_position",
@@ -267,7 +267,7 @@
       ],
       "default": "center",
       "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.label"
-    },    
+    },
     {
       "type": "checkbox",
       "id": "show_text_box",
@@ -310,6 +310,21 @@
       "id": "show_text_below",
       "default": true,
       "label": "t:sections.email-signup-banner.settings.show_text_below.label"
+    },
+    {
+      "type": "select",
+      "id": "linear_bg_class",
+      "label": "Background Linear",
+      "default": "",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "gold-bg", "label": "Gold Gradient" },
+        { "value": "gold-bg-all", "label": "Gold Gradient All" },
+        { "value": "gold-bg-child", "label": "Gold Gradient Child" },
+        { "value": "black-bg", "label": "Black Gradient" },
+        { "value": "black-bg-all", "label": "Black Gradient All" },
+        { "value": "black-bg-child", "label": "Black Gradient Child" }
+      ]
     }
   ],
   "blocks": [

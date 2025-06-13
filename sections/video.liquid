@@ -53,7 +53,7 @@
     </div>
     <deferred-media
       class="video-section__media deferred-media gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-      data-media-id="{{ video_id }}"
+      data-media-id="{{ video_id }} {{ section.settings.linear_bg_class }}"
       {% if poster != null %}
         style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
       {% endif %}
@@ -244,6 +244,21 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "select",
+      "id": "linear_bg_class",
+      "label": "Background Linear",
+      "default": "",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "gold-bg", "label": "Gold Gradient" },
+        { "value": "gold-bg-all", "label": "Gold Gradient All" },
+        { "value": "gold-bg-child", "label": "Gold Gradient Child" },
+        { "value": "black-bg", "label": "Black Gradient" },
+        { "value": "black-bg-all", "label": "Black Gradient All" },
+        { "value": "black-bg-child", "label": "Black Gradient Child" }
+      ]
     }
   ],
   "presets": [

@@ -2937,6 +2937,20 @@ details-disclosure > details {
   background-attachment: fixed;
 }
 
+/* Optional black gradient background */
+.black-bg, .black-bg-all, .black-bg-all .gradient, .black-bg-child .gradient {
+  position: relative;
+  background: linear-gradient(to left, #1a1a1a 0%, #2c2c2c 50%, #000000 100%);
+  color: #e0e0e0;
+}
+
+/* Optional gold gradient background */
+.gold-bg, .gold-bg-all, .gold-bg-all .gradient, .gold-bg-child .gradient  {
+  position: relative;
+  background: linear-gradient(to left, #ffd7c7 0%, #e8bc49 50%, #8b5e19 100%);
+  color: #fff5d1;
+}
+
 @media screen and (forced-colors: active) {
   .icon {
     color: CanvasText;

@@ -77,7 +77,7 @@
           {%- else -%}
             <div class="product__media-item">
               <div
-                class="product-media-container global-media-settings gradient{% if section.settings.constrain_to_viewport %} constrain-height{% endif %}"
+                class="product-media-container global-media-settings gradient{% if section.settings.constrain_to_viewport %} constrain-height{% endif %} {{ section.settings.linear_bg_class }}"
                 style="--ratio: 1.0; --preview-ratio: 1.0;"
               >
                 {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -289,7 +289,10 @@
                                   </dt>
                                   <dd>
                                     <span class="price-per-item--current">
-                                      {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                      {{-
+                                        'products.product.volume_pricing.price_at_each_html'
+                                        | t: price: variant_price
+                                      -}}
                                     </span>
                                   </dd>
                                 </dl>
@@ -1455,6 +1458,21 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "select",
+      "id": "linear_bg_class",
+      "label": "Background Linear",
+      "default": "",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "gold-bg", "label": "Gold Gradient" },
+        { "value": "gold-bg-all", "label": "Gold Gradient All" },
+        { "value": "gold-bg-child", "label": "Gold Gradient Child" },
+        { "value": "black-bg", "label": "Black Gradient" },
+        { "value": "black-bg-all", "label": "Black Gradient All" },
+        { "value": "black-bg-child", "label": "Black Gradient Child" }
+      ]
     }
   ],
   "presets": [

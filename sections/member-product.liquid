@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} {{ section.settings.linear_bg_class }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -71,60 +71,57 @@
       onload="this.media='all'"
     >
   {%- endif -%}
-  
+
   {% comment %} This code is for membership at line 520 or search for membership_code {% endcomment %}
   {%- comment -%}
-  This code checks the customer's membership tier.
-  
-  1. The `membership_value` is the product title in lowercase with spaces replaced by underscores — it is used to match against customer tags.
-  2. The Membership collection is assumed to be sorted by price from lowest to highest.
-  3. The loop assigns:
-     - `number_tier`: the index of the current product within the Membership collection.
-     - `number_customer_tier`: the highest membership tier the customer has based on their tags.
-     - `current_tier`: the title of the customer's current membership.
-  
-  If the customer already has the same or a higher tier, a message is shown. Otherwise, the membership buy buttons are rendered.
+    This code checks the customer's membership tier.
+
+    1. The `membership_value` is the product title in lowercase with spaces replaced by underscores — it is used to match against customer tags.
+    2. The Membership collection is assumed to be sorted by price from lowest to highest.
+    3. The loop assigns:
+       - `number_tier`: the index of the current product within the Membership collection.
+       - `number_customer_tier`: the highest membership tier the customer has based on their tags.
+       - `current_tier`: the title of the customer's current membership.
+
+    If the customer already has the same or a higher tier, a message is shown. Otherwise, the membership buy buttons are rendered.
   {%- endcomment -%}
- 
+
   {% liquid
     # Get the 'membership' collection by its handle
-    assign membership_collection = collections['membership']
-  
+    assign membership_collection = collections.membership
+
     # Initialize variables
-    assign current_tier = ''                 
-    assign number_tier = -1                  
-    assign number_customer_tier = -1        
-    assign membership_counter = 0           
-  
+    assign current_tier = ''
+    assign number_tier = -1
+    assign number_customer_tier = -1
+    assign membership_counter = 0
+
     # Proceed only if the membership collection exists
     if membership_collection
-  
       # Loop through each product in the membership collection
       for membership_product in membership_collection.products
-  
         # Format the product title to match the expected customer tag format
         assign membership_title = membership_product.title
         assign membership_value = membership_title | downcase | replace: ' ', '_'
-  
+
         # Check if the current product (being viewed) matches this membership tier
         # If so, store its position in the tier list
         if product.title == membership_title
           assign number_tier = membership_counter
         endif
-  
+
         # Check if the customer has this membership tier (by matching tags)
         if customer.tags contains membership_value
-          assign number_customer_tier = membership_counter   
-          assign current_tier = membership_title             
+          assign number_customer_tier = membership_counter
+          assign current_tier = membership_title
         endif
-  
+
         # Move to the next tier level in the list
         assign membership_counter = membership_counter | plus: 1
-  
       endfor
     endif
   %}
- 
+
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
@@ -409,7 +406,10 @@
                                 </dt>
                                 <dd>
                                   <span class="price-per-item--current">
-                                    {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                    {{-
+                                      'products.product.volume_pricing.price_at_each_html'
+                                      | t: price: variant_price
+                                    -}}
                                   </span>
                                 </dd>
                               </dl>
@@ -519,8 +519,8 @@
               {%- when 'buy_buttons' -%}
                 {% comment %} membership_code {% endcomment %}
                 {%- if number_customer_tier >= number_tier and number_tier >= 0 -%}
-                    <h2>You are already a {{ current_tier }}</h2>
-                {%- else  -%}
+                  <h2>You are already a {{ current_tier }}</h2>
+                {%- else -%}
                   {%- render 'buy-buttons-membership',
                     block: block,
                     product: product,
@@ -528,7 +528,7 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
-                {%- endif -%}  
+                {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -779,28 +779,27 @@
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
-
   </div>
 </product-info>
-    <script>
-      // 1. Change button text inside Shopify payment buttons
-      function replaceBuyItNowButtonText() {
-        const intervalId = setInterval(() => {
-          const buttons = document.querySelectorAll('div[data-shopify="payment-button"] button');
-      
-          for (const button of buttons) {
-            if (button.textContent.trim() === "Buy it now") {
-              button.textContent = "Sign Up Now";
-              clearInterval(intervalId);  //Stop the loop after changing the text
-              break;
-            }
-          }
-        }, 1000);  //Every 3 seconds
+<script>
+  // 1. Change button text inside Shopify payment buttons
+  function replaceBuyItNowButtonText() {
+    const intervalId = setInterval(() => {
+      const buttons = document.querySelectorAll('div[data-shopify="payment-button"] button');
+
+      for (const button of buttons) {
+        if (button.textContent.trim() === 'Buy it now') {
+          button.textContent = 'Sign Up Now';
+          clearInterval(intervalId); //Stop the loop after changing the text
+          break;
+        }
       }
-      
-      // Run the function
-      replaceBuyItNowButtonText();
-    </script>
+    }, 1000); //Every 3 seconds
+  }
+
+  // Run the function
+  replaceBuyItNowButtonText();
+</script>
 {% schema %}
 {
   "name": "Member Product",
@@ -813,7 +812,7 @@
     {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
-      "settings": [ 
+      "settings": [
         {
           "type": "inline_richtext",
           "id": "text",
@@ -980,7 +979,7 @@
           "id": "hide_add_to_cart",
           "label": "Hide Add to Cart Button",
           "default": false
-        },              
+        },
         {
           "type": "checkbox",
           "id": "show_dynamic_checkout",
@@ -1757,7 +1756,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_2.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_2",
@@ -1957,7 +1956,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_3.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_3",
@@ -2259,7 +2258,7 @@
       ],
       "default": "hide",
       "label": "t:sections.main-product.settings.mobile_thumbnails.label"
-    },    
+    },
     {
       "type": "select",
       "id": "media_position",
@@ -2331,6 +2330,21 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "select",
+      "id": "linear_bg_class",
+      "label": "Background Linear",
+      "default": "",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "gold-bg", "label": "Gold Gradient" },
+        { "value": "gold-bg-all", "label": "Gold Gradient All" },
+        { "value": "gold-bg-child", "label": "Gold Gradient Child" },
+        { "value": "black-bg", "label": "Black Gradient" },
+        { "value": "black-bg-all", "label": "Black Gradient All" },
+        { "value": "black-bg-child", "label": "Black Gradient Child" }
+      ]
     }
   ]
 }
