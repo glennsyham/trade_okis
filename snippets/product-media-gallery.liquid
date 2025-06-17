@@ -42,6 +42,14 @@
   endif
 -%}
 
+{% if media_count >= 3 %}
+  <style>
+    .product--medium:not(.product--no-media) .product__info-wrapper,
+    .product--small:not(.product--no-media) .product__media-wrapper {
+      max-width: 37%;
+    }
+  </style>
+{% endif %}
 <media-gallery
   id="MediaGallery-{{ section.id }}"
   role="region"
