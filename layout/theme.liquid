@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
+
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -252,13 +253,12 @@
           font-size: 1.6rem;
         }
       }
+
       @media (max-width: 767px) {
-        sticky-header {
+        sticky-header, footer {
           display: none !important;
         }
-      }    
-
-        
+      }
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -302,7 +302,59 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  {% include 'pagefly-app-header' %}</head>
+    {% include 'pagefly-app-header' %}
+    <style>
+      .simplee-locked-details {
+        margin-bottom: 60px !important;
+      }
+    </style>
+    <script>
+      /**
+       * Automatically checks for and clicks the mobile menu summary button
+       * inside the #Details-menu-drawer-container element.
+       *
+       * This is a workaround for a bug in the Shopify Trade theme on mobile,
+       * where the sticky header causes the menu drawer to remain active
+       * and block page interaction, even if it is visually hidden (e.g., via display: none).
+       *
+       * The function runs every 2 seconds, up to 5 times, until it successfully
+       * finds and clicks the <summary> element to close the floating menu.
+       */
+      function tryClickMenuSummary(maxAttempts = 5, interval = 2000) {
+        let attempts = 0;
+
+        const intervalId = setInterval(() => {
+          attempts++;
+
+          const container = document.getElementById('Details-menu-drawer-container');
+
+          if (container) {
+            const summaryButton = container.querySelector(
+              'summary.header__icon.header__icon--menu.header__icon--summary.link.focus-inset'
+            );
+
+            if (summaryButton) {
+              summaryButton.click();
+              console.log('Summary button clicked.');
+              clearInterval(intervalId);
+            } else {
+              console.log('Container found, but summary button not found.');
+            }
+          } else {
+            console.log(`Attempt ${attempts}: Container not found.`);
+          }
+
+          if (attempts >= maxAttempts) {
+            console.log('Max attempts reached. Stopping.');
+            clearInterval(intervalId);
+          }
+        }, interval);
+      }
+
+      // Run the function
+      tryClickMenuSummary();
+    </script>
+  </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
@@ -316,12 +368,16 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-       {% assign sm_show_content = true %} {% include 'simplee-memberships' %}
-                                              {% if sm_show_content %}
-                                                    {{ content_for_layout }}
-                                                {% else %}
-                                                    {%  echo shop.metafields.simplee.restricted %}
-                                                {% endif %}
+      {% assign sm_show_content = true %}
+      {% include 'simplee-memberships' %}
+      {% if sm_show_content %}
+        {{ content_for_layout }}
+      {% else %}
+        {% echo shop.metafields.simplee.restricted %}
+        <script>
+          window.location.href = '/pages/membership';
+        </script>
+      {% endif %}
     </main>
 
     {% sections 'footer-group' %}
