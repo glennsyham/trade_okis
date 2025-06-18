@@ -44,9 +44,11 @@
 
 {% if media_count >= 3 %}
   <style>
-    .product--medium:not(.product--no-media) .product__info-wrapper,
-    .product--small:not(.product--no-media) .product__media-wrapper {
-      max-width: 37%;
+    @media screen and (min-width: 769px) {
+      .product--medium:not(.product--no-media) .product__info-wrapper,
+      .product--small:not(.product--no-media) .product__media-wrapper {
+        max-width: 37%;
+      }
     }
   </style>
 {% endif %}
