@@ -34,6 +34,7 @@
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'okis-custom.js' | asset_url }}" defer="defer"></script>
 
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
@@ -253,12 +254,13 @@
           font-size: 1.6rem;
         }
       }
-
+      
       @media (max-width: 767px) {
-        sticky-header, footer {
+        sticky-header {
           display: none !important;
         }
-      }
+      } 
+      
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -302,58 +304,13 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-    {% include 'pagefly-app-header' %}
-    <style>
-      .simplee-locked-details {
-        margin-bottom: 60px !important;
-      }
-    </style>
-    <script>
-      /**
-       * Automatically checks for and clicks the mobile menu summary button
-       * inside the #Details-menu-drawer-container element.
-       *
-       * This is a workaround for a bug in the Shopify Trade theme on mobile,
-       * where the sticky header causes the menu drawer to remain active
-       * and block page interaction, even if it is visually hidden (e.g., via display: none).
-       *
-       * The function runs every 2 seconds, up to 5 times, until it successfully
-       * finds and clicks the <summary> element to close the floating menu.
-       */
-      function tryClickMenuSummary(maxAttempts = 15, interval = 3000) {
-        let attempts = 0;
-
-        const intervalId = setInterval(() => {
-          attempts++;
-
-          const container = document.getElementById('Details-menu-drawer-container');
-
-          if (container && container.hasAttribute('open')) {
-            const summaryButton = container.querySelector(
-              'summary.header__icon.header__icon--menu.header__icon--summary.link.focus-inset'
-            );
-
-            if (summaryButton) {
-              summaryButton.click();
-              console.log('Summary button clicked.');
-              clearInterval(intervalId);
-            } else {
-              console.log('Container is open, but summary button not found.');
-            }
-          } else {
-            console.log(`Attempt ${attempts}: Container not open or not found.`);
-          }
-
-          if (attempts >= maxAttempts) {
-            console.log('Max attempts reached. Stopping.');
-            clearInterval(intervalId);
-          }
-        }, interval);
-      }
-
-      // Run the function
-      tryClickMenuSummary();
-    </script>
+  {% include 'pagefly-app-header' %}
+  <style>
+    .simplee-locked-details {
+    margin-bottom: 60px !important;
+  }
+  </style>
+ 
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
