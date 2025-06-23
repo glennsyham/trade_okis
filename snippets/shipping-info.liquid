@@ -79,7 +79,7 @@
 {% assign seconds_to_add_end = days_to_add | times: 86400 %}
 
 {% if localization.country.iso_code == block.settings.delivery_country %}
-  <div class="product__info product-info rte">
+  <div class="gradient color-{{ section.settings.section_color_scheme }}  product__info product-info rte">
     <h3 class="h5">
       Shipping to: <span class="text-body">{{ localization.country.name }}</span>
     </h3>
