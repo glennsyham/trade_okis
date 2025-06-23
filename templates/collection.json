@@ -5,17 +5,20 @@
             "settings": {
                 "show_collection_description": true,
                 "show_collection_image": false,
-                "color_scheme": "scheme-4"
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
+                "linear_bg_class": ""
             }
         },
         "product-grid": {
             "type": "main-collection-product-grid",
-            "custom_css": [],
+            "custom_css": [
+                ".facets-container * {font-weight: bold; font-size: 15px;}"
+            ],
             "settings": {
                 "products_per_page": 20,
                 "columns_desktop": 5,
                 "columns_mobile": "2",
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
                 "image_ratio": "adapt",
                 "image_shape": "default",
                 "show_secondary_image": true,
@@ -26,7 +29,8 @@
                 "filter_type": "vertical",
                 "enable_sorting": true,
                 "padding_top": 36,
-                "padding_bottom": 36
+                "padding_bottom": 36,
+                "linear_bg_class": ""
             }
         }
     },

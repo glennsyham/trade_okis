@@ -1,135 +1,79 @@
 {
     "sections": {
-        "image_banner": {
-            "type": "image-banner",
+        "slideshow_HDbQAH": {
+            "type": "slideshow",
             "blocks": {
-                "text": {
-                    "type": "text",
+                "slide_k6mhqm": {
+                    "type": "slide",
                     "settings": {
-                        "text": "From our exclusive collection to your doorstep.",
-                        "text_style": "subtitle"
+                        "image": "shopify://shop_images/LIHGTNING_SUPER_MEGA_SALE_3.svg",
+                        "image_overlay_opacity": 0,
+                        "heading": "",
+                        "heading_size": "h1",
+                        "subheading": "",
+                        "button_label": "",
+                        "link": "",
+                        "button_style_secondary": false,
+                        "show_text_box": false,
+                        "box_align": "top-left",
+                        "text_alignment": "center",
+                        "text_alignment_mobile": "center",
+                        "color_scheme": "scheme-1"
                     }
                 },
-                "heading": {
-                    "type": "heading",
+                "slide_LKaKfG": {
+                    "type": "slide",
                     "settings": {
-                        "heading": "Your Favorite Finds, All in One Place",
-                        "heading_size": "hxl"
+                        "image": "shopify://shop_images/LIHGTNING_SUPER_MEGA_SALE_4.svg",
+                        "image_overlay_opacity": 0,
+                        "heading": "",
+                        "heading_size": "h1",
+                        "subheading": "",
+                        "button_label": "",
+                        "link": "",
+                        "button_style_secondary": false,
+                        "show_text_box": false,
+                        "box_align": "middle-center",
+                        "text_alignment": "center",
+                        "text_alignment_mobile": "center",
+                        "color_scheme": "scheme-1"
                     }
                 },
-                "button": {
-                    "type": "buttons",
+                "slide_eaXbfw": {
+                    "type": "slide",
                     "settings": {
-                        "button_label_1": "Shop All",
-                        "button_link_1": "shopify://collections",
-                        "button_style_secondary_1": true,
-                        "button_label_2": "Become an Affiliate",
-                        "button_link_2": "https://okis-worldwide.goaffpro.com/",
-                        "button_style_secondary_2": false
+                        "image": "shopify://shop_images/LIHGTNING_SUPER_MEGA_SALE_5.svg",
+                        "image_overlay_opacity": 0,
+                        "heading": "",
+                        "heading_size": "h1",
+                        "subheading": "",
+                        "button_label": "",
+                        "link": "",
+                        "button_style_secondary": false,
+                        "show_text_box": false,
+                        "box_align": "middle-center",
+                        "text_alignment": "center",
+                        "text_alignment_mobile": "center",
+                        "color_scheme": "scheme-1"
                     }
                 }
             },
             "block_order": [
-                "text",
-                "heading",
-                "button"
+                "slide_k6mhqm",
+                "slide_LKaKfG",
+                "slide_eaXbfw"
             ],
+            "name": "t:sections.slideshow.presets.name",
             "settings": {
-                "image": "shopify://shop_images/background_003.png",
-                "image_overlay_opacity": 40,
-                "image_height": "medium",
-                "image_behavior": "zoom-in",
-                "desktop_content_position": "middle-left",
-                "desktop_content_alignment": "left",
-                "show_text_box": false,
-                "color_scheme": "scheme-bf258355-28e8-4f18-a9bb-f5cb7d0a6837",
-                "stack_images_on_mobile": true,
-                "mobile_content_alignment": "center",
-                "show_text_below": false
-            }
-        },
-        "multicolumn": {
-            "type": "multicolumn",
-            "blocks": {
-                "column1": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Insert partner logo",
-                        "text": "",
-                        "link_label": "",
-                        "link": ""
-                    }
-                },
-                "column2": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Insert partner logo",
-                        "text": "",
-                        "link_label": "",
-                        "link": ""
-                    }
-                },
-                "column3": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Insert partner logo",
-                        "text": "",
-                        "link_label": "",
-                        "link": ""
-                    }
-                },
-                "column4": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Insert partner logo",
-                        "text": "",
-                        "link_label": "",
-                        "link": ""
-                    }
-                },
-                "column5": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Insert partner logo",
-                        "text": "",
-                        "link_label": "",
-                        "link": ""
-                    }
-                },
-                "column6": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Insert partner logo",
-                        "text": "",
-                        "link_label": "",
-                        "link": ""
-                    }
-                }
-            },
-            "block_order": [
-                "column1",
-                "column2",
-                "column3",
-                "column4",
-                "column5",
-                "column6"
-            ],
-            "disabled": true,
-            "settings": {
-                "title": "",
-                "heading_size": "h1",
-                "image_width": "full",
-                "image_ratio": "adapt",
-                "button_label": "",
-                "button_link": "",
-                "columns_desktop": 6,
-                "column_alignment": "center",
-                "background_style": "none",
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
-                "columns_mobile": "2",
-                "swipe_on_mobile": true,
-                "padding_top": 12,
-                "padding_bottom": 12
+                "layout": "full_bleed",
+                "slide_height": "adapt_image",
+                "slider_visual": "dots",
+                "auto_rotate": false,
+                "change_slides_speed": 5,
+                "image_behavior": "none",
+                "show_text_below": false,
+                "accessibility_info": "Slideshow about our brand",
+                "linear_bg_class": ""
             }
         },
         "rich_text": {
@@ -138,7 +82,7 @@
                 "text": {
                     "type": "text",
                     "settings": {
-                        "text": "<p>Outstanding service | Exclusive pricing | Industry expertise</p>"
+                        "text": "<h4><a href=\"/pages/mega-sale\" title=\"Mega Sale\"><strong>Super Mega Sales</strong></a><strong> | </strong><a href=\"/pages/free-shipping\" title=\"Free Shipping\"><strong>Free Shipping</strong></a></h4>"
                     }
                 }
             },
@@ -148,92 +92,85 @@
             "settings": {
                 "desktop_content_position": "center",
                 "content_alignment": "center",
-                "color_scheme": "scheme-af237c41-4c89-4187-867b-88f7e47e8d81",
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
                 "full_width": true,
-                "padding_top": 4,
-                "padding_bottom": 4
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "linear_bg_class": ""
             }
         },
-        "featured_collection1": {
+        "featured_collection_CB6pte": {
             "type": "featured-collection",
+            "name": "t:sections.featured-collection.presets.name",
             "settings": {
-                "collection": "all-wear",
-                "products_to_show": 5,
-                "title": "Proven bestsellers",
-                "heading_size": "h2",
+                "collection": "female-top-cotton-longsleeve",
+                "products_to_show": 13,
+                "title": "<strong>Recommendation</strong>",
+                "heading_size": "h1",
                 "description": "",
                 "show_description": false,
-                "description_style": "body",
-                "columns_desktop": 5,
+                "description_style": "uppercase",
+                "columns_desktop": 6,
                 "enable_desktop_slider": false,
                 "full_width": false,
                 "show_view_all": false,
                 "view_all_style": "solid",
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
                 "image_ratio": "adapt",
                 "image_shape": "default",
-                "show_secondary_image": false,
-                "show_vendor": false,
-                "show_rating": true,
-                "quick_add": "bulk",
+                "show_secondary_image": true,
+                "show_vendor": true,
+                "show_rating": false,
+                "quick_add": "none",
                 "columns_mobile": "2",
                 "swipe_on_mobile": false,
-                "padding_top": 36,
-                "padding_bottom": 52
+                "padding_top": 16,
+                "padding_bottom": 0,
+                "linear_bg_class": ""
             }
         },
-        "collection_list": {
-            "type": "collection-list",
-            "blocks": {
-                "featured_collection1": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "female"
-                    }
-                },
-                "featured_collection2": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "male"
-                    }
-                },
-                "featured_collection3": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "all-wear"
-                    }
-                },
-                "featured_collection4": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "new-arrivarls"
-                    }
-                },
-                "featured_collection5": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "crop-top"
-                    }
-                }
-            },
-            "block_order": [
-                "featured_collection1",
-                "featured_collection2",
-                "featured_collection3",
-                "featured_collection4",
-                "featured_collection5"
-            ],
+        "pagefly_section_wNP9cm": {
+            "type": "pagefly-section",
+            "name": "PageFly Section",
             "settings": {
-                "title": "Shop our top categories",
-                "heading_size": "h2",
-                "image_ratio": "square",
-                "columns_desktop": 5,
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+                "section_id": "pf-94452416"
+            }
+        },
+        "pagefly_section_RiMBne": {
+            "type": "pagefly-section",
+            "name": "PageFly Section",
+            "settings": {
+                "section_id": "pf-94452416"
+            }
+        },
+        "featured_collection1": {
+            "type": "featured-collection",
+            "custom_css": [],
+            "settings": {
+                "collection": "okis-cotton-toupe-longsleeves",
+                "products_to_show": 16,
+                "title": "",
+                "heading_size": "h1",
+                "description": "",
+                "show_description": false,
+                "description_style": "body",
+                "columns_desktop": 6,
+                "enable_desktop_slider": false,
+                "full_width": false,
                 "show_view_all": false,
-                "columns_mobile": "1",
+                "view_all_style": "solid",
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
+                "image_ratio": "adapt",
+                "image_shape": "default",
+                "show_secondary_image": true,
+                "show_vendor": false,
+                "show_rating": true,
+                "quick_add": "none",
+                "columns_mobile": "2",
                 "swipe_on_mobile": false,
-                "padding_top": 48,
-                "padding_bottom": 60
+                "padding_top": 16,
+                "padding_bottom": 0,
+                "linear_bg_class": ""
             }
         },
         "multicolumn1": {
@@ -297,52 +234,94 @@
                 "columns_mobile": "1",
                 "swipe_on_mobile": true,
                 "padding_top": 68,
-                "padding_bottom": 68
-            }
-        },
-        "17492782517bdf5439": {
-            "type": "apps",
-            "blocks": {
-                "gsc_countdown_timer_countdown_fex3MK": {
-                    "type": "shopify://apps/gsc-countdown-timer/blocks/countdown/58dc5b1b-43d2-4209-b1f3-52aff31643ed",
-                    "settings": {
-                        "widget_id": "GSC-EMBED-AzUqoSLCQGWL"
-                    }
-                }
-            },
-            "block_order": [
-                "gsc_countdown_timer_countdown_fex3MK"
-            ],
-            "settings": {
-                "include_margins": true
+                "padding_bottom": 68,
+                "linear_bg_class": ""
             }
         },
         "featured_collection2": {
             "type": "featured-collection",
+            "custom_css": [],
             "settings": {
-                "collection": "new-arrivarls",
+                "collection": "new-arrivals",
                 "products_to_show": 4,
-                "title": "New arrivals",
-                "heading_size": "h2",
+                "title": "",
+                "heading_size": "h1",
                 "description": "",
                 "show_description": false,
                 "description_style": "body",
                 "columns_desktop": 5,
-                "enable_desktop_slider": true,
+                "enable_desktop_slider": false,
                 "full_width": false,
-                "show_view_all": false,
+                "show_view_all": true,
                 "view_all_style": "solid",
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
                 "image_ratio": "adapt",
                 "image_shape": "default",
-                "show_secondary_image": false,
+                "show_secondary_image": true,
                 "show_vendor": false,
                 "show_rating": true,
-                "quick_add": "bulk",
+                "quick_add": "none",
                 "columns_mobile": "2",
-                "swipe_on_mobile": true,
-                "padding_top": 36,
-                "padding_bottom": 52
+                "swipe_on_mobile": false,
+                "padding_top": 0,
+                "padding_bottom": 32,
+                "linear_bg_class": ""
+            }
+        },
+        "collection_list": {
+            "type": "collection-list",
+            "blocks": {
+                "featured_collection1": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "women"
+                    }
+                },
+                "featured_collection2": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "men"
+                    }
+                },
+                "featured_collection3": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "best-selling"
+                    }
+                },
+                "featured_collection4": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "new-arrivals"
+                    }
+                },
+                "featured_collection5": {
+                    "type": "featured_collection",
+                    "settings": {
+                        "collection": "all"
+                    }
+                }
+            },
+            "block_order": [
+                "featured_collection1",
+                "featured_collection2",
+                "featured_collection3",
+                "featured_collection4",
+                "featured_collection5"
+            ],
+            "custom_css": [],
+            "settings": {
+                "title": "<strong>Shop our top categories</strong>",
+                "heading_size": "h1",
+                "image_ratio": "portrait",
+                "columns_desktop": 5,
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
+                "show_view_all": false,
+                "columns_mobile": "2",
+                "swipe_on_mobile": false,
+                "padding_top": 48,
+                "padding_bottom": 60,
+                "linear_bg_class": ""
             }
         },
         "multicolumn2": {
@@ -406,19 +385,21 @@
                 "columns_mobile": "1",
                 "swipe_on_mobile": false,
                 "padding_top": 44,
-                "padding_bottom": 48
+                "padding_bottom": 48,
+                "linear_bg_class": ""
             }
         }
     },
     "order": [
-        "image_banner",
-        "multicolumn",
+        "slideshow_HDbQAH",
+        "pagefly_section_RiMBne",
         "rich_text",
+        "featured_collection_CB6pte",
+        "pagefly_section_wNP9cm",
         "featured_collection1",
-        "collection_list",
         "multicolumn1",
-        "17492782517bdf5439",
         "featured_collection2",
+        "collection_list",
         "multicolumn2"
     ]
 }
