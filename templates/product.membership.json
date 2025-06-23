@@ -9,63 +9,84 @@
                 },
                 "price": {
                     "type": "price",
-                    "disabled": true,
                     "settings": {}
+                },
+                "variant_picker_yhD3cy": {
+                    "type": "variant_picker",
+                    "settings": {
+                        "picker_type": "button",
+                        "swatch_shape": "circle"
+                    }
                 },
                 "buy_buttons_7g944h": {
                     "type": "buy_buttons",
                     "settings": {
                         "hide_add_to_cart": true,
                         "show_dynamic_checkout": true,
-                        "show_gift_card_recipient": false
+                        "show_gift_card_recipient": true
                     }
                 },
                 "description": {
                     "type": "description",
                     "settings": {}
                 },
-                "share": {
-                    "type": "share",
+                "collapsible-row-1": {
+                    "type": "collapsible_tab",
                     "disabled": true,
                     "settings": {
-                        "share_label": "Share"
+                        "heading": "Product features",
+                        "icon": "star",
+                        "content": "<p>Test</p>",
+                        "page": "product-features"
+                    }
+                },
+                "collapsible-row-0": {
+                    "type": "collapsible_tab",
+                    "disabled": true,
+                    "settings": {
+                        "heading": "Materials and care",
+                        "icon": "leaf",
+                        "content": "<p>Tet</p>",
+                        "page": "materials-and-care"
+                    }
+                },
+                "collapsible-row-2": {
+                    "type": "collapsible_tab",
+                    "disabled": true,
+                    "settings": {
+                        "heading": "Merchandising tips",
+                        "icon": "check_mark",
+                        "content": "<p>Test</p>",
+                        "page": "merchandising-tips"
                     }
                 }
             },
             "block_order": [
                 "title",
                 "price",
+                "variant_picker_yhD3cy",
                 "buy_buttons_7g944h",
                 "description",
-                "share"
+                "collapsible-row-1",
+                "collapsible-row-0",
+                "collapsible-row-2"
             ],
             "custom_css": [],
             "settings": {
                 "enable_sticky_info": true,
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
                 "media_size": "small",
                 "constrain_to_viewport": false,
                 "media_fit": "cover",
-                "gallery_layout": "thumbnail",
+                "gallery_layout": "thumbnail_slider",
                 "mobile_thumbnails": "hide",
                 "media_position": "right",
                 "image_zoom": "lightbox",
                 "hide_variants": true,
                 "enable_video_looping": false,
                 "padding_top": 36,
-                "padding_bottom": 36
-            }
-        },
-        "quick-order-list": {
-            "type": "quick-order-list",
-            "disabled": true,
-            "settings": {
-                "variants_per_page": 50,
-                "show_image": true,
-                "show_sku": true,
-                "color_scheme": "scheme-2",
-                "padding_top": 36,
-                "padding_bottom": 16
+                "padding_bottom": 36,
+                "linear_bg_class": ""
             }
         },
         "related-products": {
@@ -84,11 +105,13 @@
                 "show_vendor": false,
                 "show_rating": false,
                 "padding_top": 36,
-                "padding_bottom": 44
+                "padding_bottom": 44,
+                "linear_bg_class": ""
             }
         },
         "1747730875fce4889b": {
             "type": "apps",
+            "custom_css": [],
             "settings": {
                 "include_margins": true
             }
@@ -98,13 +121,29 @@
             "settings": {
                 "include_margins": true
             }
+        },
+        "174926932860816f09": {
+            "type": "apps",
+            "settings": {
+                "include_margins": true
+            }
+        },
+        "1749437861a6deb05d": {
+            "type": "apps",
+            "custom_css": [
+                "{background-color: #f9e8dc;}"
+            ],
+            "settings": {
+                "include_margins": true
+            }
         }
     },
     "order": [
         "main",
-        "quick-order-list",
         "related-products",
         "1747730875fce4889b",
-        "1748329665801a3eb1"
+        "1748329665801a3eb1",
+        "174926932860816f09",
+        "1749437861a6deb05d"
     ]
 }
