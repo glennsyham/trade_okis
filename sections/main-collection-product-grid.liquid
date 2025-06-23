@@ -194,16 +194,6 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
-<script type="text/javascript">
-  window.addEventListener('load', function () {
-    // Delay slightly to ensure dynamic content is loaded
-    setTimeout(function () {
-      document.querySelectorAll('summary[aria-expanded="false"]').forEach((summary) => {
-        summary.click();
-      });
-    }, 500); // adjust this delay as needed
-  });
-</script>
 {% schema %}
 {
   "name": "t:sections.main-collection-product-grid.name",

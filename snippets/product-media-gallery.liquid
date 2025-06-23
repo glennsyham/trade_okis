@@ -41,16 +41,16 @@
     assign media_width = 0.45
   endif
 -%}
-
-{% if media_count >= 3 %}
-  <style>
-    @media screen and (min-width: 769px) {
-      .product--medium:not(.product--no-media) .product__info-wrapper,
-      .product--small:not(.product--no-media) .product__media-wrapper {
-        max-width: 37%;
-      }
-    }
-  </style>
+    
+{% if media_count >= 2 %} 
+<style>
+@media screen and (min-width: 769px) {
+  .product--medium:not(.product--no-media) .product__info-wrapper,
+  .product--small:not(.product--no-media) .product__media-wrapper {
+    max-width: 35%;
+  }
+}
+</style>  
 {% endif %}
 <media-gallery
   id="MediaGallery-{{ section.id }}"
