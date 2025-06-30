@@ -1,0 +1,987 @@
+{% doc %}
+  @prompt
+    Create a product recommendations section with clickable category tabs (Women, Men, Plus, Kids, Home & Living, Beauty & Health, View All) centered on desktop. Include responsive product grid with product images optimized for 132x175px containers with proper aspect ratio, improved vertical spacing in image-title-pricing stack, responsive breakpoints for mobile/tablet/desktop, auto-adjusting container heights, clear pricing visibility, layout settings for product width control, icon-only add to cart buttons positioned next to price with proper alignment, and PHP peso currency formatting. Implement fully functional tab click functionality with proper JavaScript event handling for product filtering. Ensure tabs are completely clickable and functional with smooth product filtering between categories and a View All option to display all products., no collection listed when clicking the tab can you troubleshoot, centered on desktop. Include responsive product grid with product images optimized for 132x175px containers with proper aspect ratio,
+    please add this in HTML Structure
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .product-tabs-{{ ai_gen_id }} {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 100%;
+  }
+
+  .product-tabs-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+  }
+
+  .tab-container-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 8px;
+  }
+
+  .tab-button-{{ ai_gen_id }} {
+    padding: 10px 20px;
+    background-color: {{ block.settings.tab_bg_color }};
+    color: {{ block.settings.tab_text_color }};
+    border: none;
+    border-radius: {{ block.settings.tab_border_radius }}px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .tab-button-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.tab_active_bg_color }};
+    color: {{ block.settings.tab_active_text_color }};
+  }
+
+  .tab-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.tab_hover_bg_color }};
+    color: {{ block.settings.tab_hover_text_color }};
+  }
+
+  .products-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .products-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .products-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    }
+  }
+
+  .product-card-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+
+  .product-card-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    aspect-ratio: 132/175;
+    width: 100%;
+  }
+
+  .product-card-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card-{{ ai_gen_id }}:hover .product-card-image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .product-card-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .product-card-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.5;
+  }
+
+  .product-info-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 6px;
+  }
+
+  .product-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_font_size }}px;
+    font-weight: 500;
+    margin: 0;
+    color: {{ block.settings.title_color }};
+    line-height: 1.3;
+  }
+
+  .price-container-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+
+  .product-price-{{ ai_gen_id }} {
+    font-size: {{ block.settings.price_font_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.price_color }};
+  }
+
+  .compare-at-price-{{ ai_gen_id }} {
+    text-decoration: line-through;
+    color: {{ block.settings.compare_price_color }};
+    margin-right: 8px;
+    font-size: {{ block.settings.price_font_size | minus: 2 }}px;
+  }
+
+  .add-to-cart-button-{{ ai_gen_id }} {
+    background-color: {{ block.settings.add_to_cart_bg_color }};
+    color: {{ block.settings.add_to_cart_text_color }};
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 0;
+  }
+
+  .add-to-cart-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.add_to_cart_hover_bg_color }};
+  }
+
+  .add-to-cart-button-{{ ai_gen_id }} svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .section-title-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: {{ block.settings.heading_font_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.heading_color }};
+  }
+
+  .hidden-{{ ai_gen_id }} {
+    display: none;
+  }
+{% endstyle %}
+
+<product-tabs-{{ ai_gen_id }} class="product-tabs-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="product-tabs-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="section-title-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="tab-container-{{ ai_gen_id }}">
+      <button class="tab-button-{{ ai_gen_id }} active" data-category="all">{{ block.settings.view_all_text }}</button>
+      {% if block.settings.women_category != blank %}
+        <button class="tab-button-{{ ai_gen_id }}" data-category="women">{{ block.settings.women_text }}</button>
+      {% endif %}
+      {% if block.settings.men_category != blank %}
+        <button class="tab-button-{{ ai_gen_id }}" data-category="men">{{ block.settings.men_text }}</button>
+      {% endif %}
+      {% if block.settings.plus_category != blank %}
+        <button class="tab-button-{{ ai_gen_id }}" data-category="plus">{{ block.settings.plus_text }}</button>
+      {% endif %}
+      {% if block.settings.kids_category != blank %}
+        <button class="tab-button-{{ ai_gen_id }}" data-category="kids">{{ block.settings.kids_text }}</button>
+      {% endif %}
+      {% if block.settings.home_category != blank %}
+        <button class="tab-button-{{ ai_gen_id }}" data-category="home">{{ block.settings.home_text }}</button>
+      {% endif %}
+      {% if block.settings.beauty_category != blank %}
+        <button class="tab-button-{{ ai_gen_id }}" data-category="beauty">{{ block.settings.beauty_text }}</button>
+      {% endif %}
+    </div>
+
+    <div class="products-grid-{{ ai_gen_id }}">
+      {% if block.settings.women_category != blank %}
+        {% for product in block.settings.women_category.products limit: block.settings.products_per_category %}
+          <div class="product-card-{{ ai_gen_id }}" data-category="women">
+            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
+              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                {% if product.featured_image != blank %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 264 }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    width="132"
+                    height="175"
+                    class="product-card-image-{{ ai_gen_id }}"
+                  >
+                {% else %}
+                  <div class="product-card-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-apparel-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+
+            <div class="product-info-{{ ai_gen_id }}">
+              <h3 class="product-title-{{ ai_gen_id }}">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="price-container-{{ ai_gen_id }}">
+                <div class="product-price-wrapper-{{ ai_gen_id }}">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="compare-at-price-{{ ai_gen_id }}"
+                      >₱{{ product.compare_at_price | money_without_currency -}}
+                    </span>
+                  {% endif %}
+                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                </div>
+
+                <button
+                  class="add-to-cart-button-{{ ai_gen_id }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                  data-product-id="{{ product.id }}"
+                  data-variant-id="{{ product.first_available_variant.id }}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if block.settings.men_category != blank %}
+        {% for product in block.settings.men_category.products limit: block.settings.products_per_category %}
+          <div class="product-card-{{ ai_gen_id }}" data-category="men">
+            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
+              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                {% if product.featured_image != blank %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 264 }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    width="132"
+                    height="175"
+                    class="product-card-image-{{ ai_gen_id }}"
+                  >
+                {% else %}
+                  <div class="product-card-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-apparel-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+
+            <div class="product-info-{{ ai_gen_id }}">
+              <h3 class="product-title-{{ ai_gen_id }}">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="price-container-{{ ai_gen_id }}">
+                <div class="product-price-wrapper-{{ ai_gen_id }}">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="compare-at-price-{{ ai_gen_id }}"
+                      >₱{{ product.compare_at_price | money_without_currency -}}
+                    </span>
+                  {% endif %}
+                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                </div>
+
+                <button
+                  class="add-to-cart-button-{{ ai_gen_id }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                  data-product-id="{{ product.id }}"
+                  data-variant-id="{{ product.first_available_variant.id }}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if block.settings.plus_category != blank %}
+        {% for product in block.settings.plus_category.products limit: block.settings.products_per_category %}
+          <div class="product-card-{{ ai_gen_id }}" data-category="plus">
+            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
+              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                {% if product.featured_image != blank %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 264 }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    width="132"
+                    height="175"
+                    class="product-card-image-{{ ai_gen_id }}"
+                  >
+                {% else %}
+                  <div class="product-card-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-apparel-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+
+            <div class="product-info-{{ ai_gen_id }}">
+              <h3 class="product-title-{{ ai_gen_id }}">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="price-container-{{ ai_gen_id }}">
+                <div class="product-price-wrapper-{{ ai_gen_id }}">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="compare-at-price-{{ ai_gen_id }}"
+                      >₱{{ product.compare_at_price | money_without_currency -}}
+                    </span>
+                  {% endif %}
+                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                </div>
+
+                <button
+                  class="add-to-cart-button-{{ ai_gen_id }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                  data-product-id="{{ product.id }}"
+                  data-variant-id="{{ product.first_available_variant.id }}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if block.settings.kids_category != blank %}
+        {% for product in block.settings.kids_category.products limit: block.settings.products_per_category %}
+          <div class="product-card-{{ ai_gen_id }}" data-category="kids">
+            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
+              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                {% if product.featured_image != blank %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 264 }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    width="132"
+                    height="175"
+                    class="product-card-image-{{ ai_gen_id }}"
+                  >
+                {% else %}
+                  <div class="product-card-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-apparel-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+
+            <div class="product-info-{{ ai_gen_id }}">
+              <h3 class="product-title-{{ ai_gen_id }}">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="price-container-{{ ai_gen_id }}">
+                <div class="product-price-wrapper-{{ ai_gen_id }}">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="compare-at-price-{{ ai_gen_id }}"
+                      >₱{{ product.compare_at_price | money_without_currency -}}
+                    </span>
+                  {% endif %}
+                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                </div>
+
+                <button
+                  class="add-to-cart-button-{{ ai_gen_id }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                  data-product-id="{{ product.id }}"
+                  data-variant-id="{{ product.first_available_variant.id }}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if block.settings.home_category != blank %}
+        {% for product in block.settings.home_category.products limit: block.settings.products_per_category %}
+          <div class="product-card-{{ ai_gen_id }}" data-category="home">
+            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
+              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                {% if product.featured_image != blank %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 264 }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    width="132"
+                    height="175"
+                    class="product-card-image-{{ ai_gen_id }}"
+                  >
+                {% else %}
+                  <div class="product-card-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-apparel-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+
+            <div class="product-info-{{ ai_gen_id }}">
+              <h3 class="product-title-{{ ai_gen_id }}">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="price-container-{{ ai_gen_id }}">
+                <div class="product-price-wrapper-{{ ai_gen_id }}">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="compare-at-price-{{ ai_gen_id }}"
+                      >₱{{ product.compare_at_price | money_without_currency -}}
+                    </span>
+                  {% endif %}
+                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                </div>
+
+                <button
+                  class="add-to-cart-button-{{ ai_gen_id }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                  data-product-id="{{ product.id }}"
+                  data-variant-id="{{ product.first_available_variant.id }}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if block.settings.beauty_category != blank %}
+        {% for product in block.settings.beauty_category.products limit: block.settings.products_per_category %}
+          <div class="product-card-{{ ai_gen_id }}" data-category="beauty">
+            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
+              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                {% if product.featured_image != blank %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 264 }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    width="132"
+                    height="175"
+                    class="product-card-image-{{ ai_gen_id }}"
+                  >
+                {% else %}
+                  <div class="product-card-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-apparel-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+
+            <div class="product-info-{{ ai_gen_id }}">
+              <h3 class="product-title-{{ ai_gen_id }}">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="price-container-{{ ai_gen_id }}">
+                <div class="product-price-wrapper-{{ ai_gen_id }}">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="compare-at-price-{{ ai_gen_id }}"
+                      >₱{{ product.compare_at_price | money_without_currency -}}
+                    </span>
+                  {% endif %}
+                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                </div>
+
+                <button
+                  class="add-to-cart-button-{{ ai_gen_id }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                  data-product-id="{{ product.id }}"
+                  data-variant-id="{{ product.first_available_variant.id }}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</product-tabs-{{ ai_gen_id }}>
+
+<script>
+  (function () {
+    class ProductTabs extends HTMLElement {
+      constructor() {
+        super();
+        this.tabButtons = this.querySelectorAll('.tab-button-{{ ai_gen_id }}');
+        this.productCards = this.querySelectorAll('.product-card-{{ ai_gen_id }}');
+        this.addToCartButtons = this.querySelectorAll('.add-to-cart-button-{{ ai_gen_id }}');
+      }
+
+      connectedCallback() {
+        this.setupTabButtons();
+        this.setupAddToCartButtons();
+
+        // Initialize with all products visible
+        this.filterProducts('all');
+      }
+
+      setupTabButtons() {
+        this.tabButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const category = button.dataset.category;
+
+            // Update active tab
+            this.tabButtons.forEach((btn) => {
+              btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            // Filter products
+            this.filterProducts(category);
+          });
+        });
+      }
+
+      filterProducts(category) {
+        this.productCards.forEach((card) => {
+          if (category === 'all') {
+            card.classList.remove('hidden-{{ ai_gen_id }}');
+          } else {
+            const cardCategory = card.dataset.category;
+            if (cardCategory === category) {
+              card.classList.remove('hidden-{{ ai_gen_id }}');
+            } else {
+              card.classList.add('hidden-{{ ai_gen_id }}');
+            }
+          }
+        });
+      }
+
+      setupAddToCartButtons() {
+        this.addToCartButtons.forEach((button) => {
+          button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const productId = button.dataset.productId;
+            const variantId = button.dataset.variantId;
+
+            if (variantId) {
+              this.addToCart(variantId);
+            }
+          });
+        });
+      }
+
+      addToCart(variantId) {
+        const data = {
+          items: [
+            {
+              id: variantId,
+              quantity: 1,
+            },
+          ],
+        };
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Refresh mini cart or show notification
+            if (typeof window.refreshCart === 'function') {
+              window.refreshCart();
+            } else {
+              // Fallback to page refresh if no cart update function available
+              window.location.reload();
+            }
+          })
+          .catch((error) => {
+            console.error('Error adding to cart:', error);
+          });
+      }
+    }
+
+    customElements.define('product-tabs-{{ ai_gen_id }}', ProductTabs);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Category Tabs",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading font size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1200
+    },
+    {
+      "type": "header",
+      "content": "Tab Categories"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All tab text",
+      "default": "View All"
+    },
+    {
+      "type": "text",
+      "id": "women_text",
+      "label": "Women tab text",
+      "default": "Women"
+    },
+    {
+      "type": "collection",
+      "id": "women_category",
+      "label": "Women's collection"
+    },
+    {
+      "type": "text",
+      "id": "men_text",
+      "label": "Men tab text",
+      "default": "Men"
+    },
+    {
+      "type": "collection",
+      "id": "men_category",
+      "label": "Men's collection"
+    },
+    {
+      "type": "text",
+      "id": "plus_text",
+      "label": "Plus tab text",
+      "default": "Plus"
+    },
+    {
+      "type": "collection",
+      "id": "plus_category",
+      "label": "Plus collection"
+    },
+    {
+      "type": "text",
+      "id": "kids_text",
+      "label": "Kids tab text",
+      "default": "Kids"
+    },
+    {
+      "type": "collection",
+      "id": "kids_category",
+      "label": "Kids collection"
+    },
+    {
+      "type": "text",
+      "id": "home_text",
+      "label": "Home & Living tab text",
+      "default": "Home & Living"
+    },
+    {
+      "type": "collection",
+      "id": "home_category",
+      "label": "Home & Living collection"
+    },
+    {
+      "type": "text",
+      "id": "beauty_text",
+      "label": "Beauty & Health tab text",
+      "default": "Beauty & Health"
+    },
+    {
+      "type": "collection",
+      "id": "beauty_category",
+      "label": "Beauty & Health collection"
+    },
+    {
+      "type": "range",
+      "id": "products_per_category",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "label": "Products per category",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Tab Styling"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_color",
+      "label": "Tab background color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "tab_text_color",
+      "label": "Tab text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_bg_color",
+      "label": "Active tab background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_text_color",
+      "label": "Active tab text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_hover_bg_color",
+      "label": "Tab hover background color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "tab_hover_text_color",
+      "label": "Tab hover text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tab_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Tab border radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Product Grid"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Number of columns on desktop"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Grid spacing",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Product Card"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Title font size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "price_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Price font size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "compare_price_color",
+      "label": "Compare at price color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_bg_color",
+      "label": "Add to cart button color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_text_color",
+      "label": "Add to cart icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_hover_bg_color",
+      "label": "Add to cart hover color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Category Tabs"
+    }
+  ]
+}
+{% endschema %}
