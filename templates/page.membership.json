@@ -1,46 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "member_collection_pqpYd7": {
-            "type": "member-collection",
-            "name": "Mmbership Collection",
-            "settings": {
-                "collection": "membership",
-                "products_to_show": 4,
-                "title": "Membership Tiers",
-                "heading_size": "h1",
-                "description": "<p><strong>Join our membership get exclusive Items and discounts</strong></p>",
-                "show_description": false,
-                "description_style": "body",
-                "columns_desktop": 4,
-                "enable_desktop_slider": false,
-                "full_width": false,
-                "show_view_all": true,
-                "view_all_style": "solid",
-                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
-                "image_ratio": "adapt",
-                "image_shape": "default",
-                "show_secondary_image": false,
-                "show_vendor": false,
-                "show_rating": false,
-                "quick_add": "none",
-                "columns_mobile": "2",
-                "swipe_on_mobile": false,
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "linear_bg_class": ""
-            }
-        },
-        "main": {
-            "type": "main-page",
-            "disabled": true,
-            "settings": {
-                "padding_top": 28,
-                "padding_bottom": 28
-            }
-        }
+  "sections": {
+    "member_collection_pqpYd7": {
+      "type": "member-collection",
+      "name": "Mmbership Collection",
+      "settings": {
+        "collection": "membership",
+        "products_to_show": 4,
+        "title": "Membership Tiers",
+        "heading_size": "h1",
+        "description": "<p><strong>Join our membership get exclusive Items and discounts</strong></p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "linear_bg_class": ""
+      }
     },
-    "order": [
-        "member_collection_pqpYd7",
-        "main"
-    ]
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "member_collection_pqpYd7",
+    "main"
+  ]
 }

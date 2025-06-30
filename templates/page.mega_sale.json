@@ -1,1 +1,153 @@
-{"sections":{"image_banner_XaEkDg":{"type":"image-banner","name":"t:sections.image-banner.presets.name","settings":{"image":"shopify:\/\/shop_images\/30_13.png","image_overlay_opacity":0,"image_height":"adapt","image_behavior":"none","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":true,"color_scheme":"","stack_images_on_mobile":true,"mobile_content_alignment":"center","show_text_below":true,"linear_bg_class":""}},"pagefly_section_E86yrb":{"type":"pagefly-section","name":"PageFly Section","settings":{"section_id":"pf-94452416"}},"main":{"type":"main-page","settings":{"padding_top":8,"padding_bottom":0}},"featured_collection_gKDKcr":{"type":"featured-collection","name":"t:sections.featured-collection.presets.name","settings":{"collection":"female-top-cotton-longsleeve","products_to_show":17,"title":"","heading_size":"h2","description":"","show_description":false,"description_style":"subtitle","columns_desktop":5,"enable_desktop_slider":false,"full_width":false,"show_view_all":false,"view_all_style":"solid","color_scheme":"scheme-645c12e4-267e-4fd3-a454-d6bfb847526d","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":true,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":12,"padding_bottom":12,"linear_bg_class":""}}},"order":["image_banner_XaEkDg","pagefly_section_E86yrb","main","featured_collection_gKDKcr"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pagefly_section_E86yrb": {
+      "type": "pagefly-section",
+      "name": "PageFly Section",
+      "settings": {
+        "section_id": "pf-94452416"
+      }
+    },
+    "collage_PyhtdF": {
+      "type": "collage",
+      "blocks": {
+        "image_AEFXdm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_15.svg"
+          }
+        }
+      },
+      "block_order": [
+        "image_AEFXdm"
+      ],
+      "name": "t:sections.collage.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "collage",
+        "card_styles": "none",
+        "color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
+        "padding_top": 8,
+        "padding_bottom": 0,
+        "linear_bg_class": ""
+      }
+    },
+    "custom_multicolumn_TwdB8m": {
+      "type": "custom-multicolumn",
+      "blocks": {
+        "column_bTbngW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Untitled_Design_10.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_LKbjYh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_11_eb993c1a-d88b-4232-9bec-51fb09f2313f.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_99QKkr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Untitled_Design_8.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_bTbngW",
+        "column_LKbjYh",
+        "column_99QKkr"
+      ],
+      "custom_css": [
+        ".slider-buttons {display: none;}",
+        ".multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: -50px;}",
+        "@media screen and (max-width: 400px) {.multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: 30px; }}"
+      ],
+      "name": "Custom Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "circle",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 7,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 16,
+        "padding_bottom": 0,
+        "linear_bg_class": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 8,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_gKDKcr": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "bracelets",
+        "products_to_show": 17,
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "linear_bg_class": ""
+      }
+    }
+  },
+  "order": [
+    "pagefly_section_E86yrb",
+    "collage_PyhtdF",
+    "custom_multicolumn_TwdB8m",
+    "main",
+    "featured_collection_gKDKcr"
+  ]
+}

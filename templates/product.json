@@ -1,234 +1,243 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "pagefly_section_7ir4bp": {
-            "type": "pagefly-section",
-            "name": "PageFly Section",
-            "settings": {
-                "section_id": "pf-94452416"
-            }
-        },
-        "main": {
-            "type": "main-product",
-            "blocks": {
-                "title": {
-                    "type": "title",
-                    "settings": {}
-                },
-                "judge_me_reviews_preview_badge_FeX6ih": {
-                    "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-                    "settings": {}
-                },
-                "price": {
-                    "type": "price",
-                    "settings": {}
-                },
-                "inventory_FcmqQ7": {
-                    "type": "inventory",
-                    "settings": {
-                        "text_style": "body",
-                        "inventory_threshold": 10,
-                        "show_inventory_quantity": true
-                    }
-                },
-                "variant_picker_yhD3cy": {
-                    "type": "variant_picker",
-                    "settings": {
-                        "picker_type": "dropdown",
-                        "swatch_shape": "circle"
-                    }
-                },
-                "shipping_info_MteFQc": {
-                    "type": "shipping-info",
-                    "settings": {
-                        "delivery_start_date": 6,
-                        "delivery_end_date": 8,
-                        "si_shipping_text": "Free standard shipping over ₱249",
-                        "delivery_country": "PH"
-                    }
-                },
-                "shipping_info_qhVEga": {
-                    "type": "shipping-info",
-                    "settings": {
-                        "delivery_start_date": 3,
-                        "delivery_end_date": 5,
-                        "si_shipping_text": "Free standard shipping over $10",
-                        "delivery_country": "US"
-                    }
-                },
-                "shipping_info_9JNrrn": {
-                    "type": "shipping-info",
-                    "settings": {
-                        "delivery_start_date": 6,
-                        "delivery_end_date": 8,
-                        "si_shipping_text": "Free standard shipping over ¥5",
-                        "delivery_country": "JP"
-                    }
-                },
-                "shipping_info_Hmg4NN": {
-                    "type": "shipping-info",
-                    "settings": {
-                        "delivery_start_date": 6,
-                        "delivery_end_date": 8,
-                        "si_shipping_text": "Penghantaran standard percuma tamat S$30",
-                        "delivery_country": "SG"
-                    }
-                },
-                "quantity_selector_Dk3iPT": {
-                    "type": "quantity_selector",
-                    "settings": {}
-                },
-                "buy_buttons_7g944h": {
-                    "type": "buy_buttons",
-                    "settings": {
-                        "show_dynamic_checkout": true,
-                        "show_gift_card_recipient": true
-                    }
-                },
-                "collapsible-row-1": {
-                    "type": "collapsible_tab",
-                    "disabled": true,
-                    "settings": {
-                        "heading": "Product features",
-                        "icon": "star",
-                        "content": "<p>Test</p>",
-                        "page": "product-features"
-                    }
-                },
-                "collapsible-row-0": {
-                    "type": "collapsible_tab",
-                    "disabled": true,
-                    "settings": {
-                        "heading": "Materials and care",
-                        "icon": "leaf",
-                        "content": "<p>Tet</p>",
-                        "page": "materials-and-care"
-                    }
-                }
-            },
-            "block_order": [
-                "title",
-                "judge_me_reviews_preview_badge_FeX6ih",
-                "price",
-                "inventory_FcmqQ7",
-                "variant_picker_yhD3cy",
-                "shipping_info_MteFQc",
-                "shipping_info_qhVEga",
-                "shipping_info_9JNrrn",
-                "shipping_info_Hmg4NN",
-                "quantity_selector_Dk3iPT",
-                "buy_buttons_7g944h",
-                "collapsible-row-1",
-                "collapsible-row-0"
-            ],
-            "custom_css": [],
-            "settings": {
-                "enable_sticky_info": true,
-                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
-                "media_size": "small",
-                "constrain_to_viewport": true,
-                "media_fit": "cover",
-                "gallery_layout": "thumbnail_slider",
-                "mobile_thumbnails": "show",
-                "media_position": "right",
-                "image_zoom": "hover",
-                "hide_variants": false,
-                "enable_video_looping": false,
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "linear_bg_class": ""
-            }
-        },
-        "related-products": {
-            "type": "related-products",
-            "disabled": true,
-            "settings": {
-                "heading": "Other industry favorites",
-                "heading_size": "h2",
-                "products_to_show": 5,
-                "columns_desktop": 5,
-                "columns_mobile": "2",
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
-                "image_ratio": "adapt",
-                "image_shape": "default",
-                "show_secondary_image": false,
-                "show_vendor": false,
-                "show_rating": true,
-                "padding_top": 36,
-                "padding_bottom": 44,
-                "linear_bg_class": ""
-            }
-        },
-        "featured_collection_tpCgJ7": {
-            "type": "featured-collection",
-            "name": "t:sections.featured-collection.presets.name",
-            "settings": {
-                "collection": "add-ons-buy",
-                "products_to_show": 4,
-                "title": "Value Deals",
-                "heading_size": "h1",
-                "description": "",
-                "show_description": false,
-                "description_style": "body",
-                "columns_desktop": 4,
-                "enable_desktop_slider": false,
-                "full_width": false,
-                "show_view_all": true,
-                "view_all_style": "solid",
-                "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
-                "image_ratio": "adapt",
-                "image_shape": "default",
-                "show_secondary_image": true,
-                "show_vendor": false,
-                "show_rating": true,
-                "quick_add": "none",
-                "columns_mobile": "2",
-                "swipe_on_mobile": false,
-                "padding_top": 0,
-                "padding_bottom": 12,
-                "linear_bg_class": ""
-            }
-        },
-        "1747730875fce4889b": {
-            "type": "apps",
-            "blocks": {
-                "judge_me_reviews_featured_carousel_jCn4wW": {
-                    "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-                    "settings": {
-                        "maxwidth": 1080
-                    }
-                }
-            },
-            "block_order": [
-                "judge_me_reviews_featured_carousel_jCn4wW"
-            ],
-            "disabled": true,
-            "custom_css": [],
-            "settings": {
-                "include_margins": true
-            }
-        },
-        "1750137787748b89f9": {
-            "type": "apps",
-            "blocks": {
-                "judge_me_reviews_review_widget_Cn6CLN": {
-                    "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-                    "settings": {}
-                }
-            },
-            "block_order": [
-                "judge_me_reviews_review_widget_Cn6CLN"
-            ],
-            "settings": {
-                "include_margins": true
-            }
-        }
+  "sections": {
+    "pagefly_section_7ir4bp": {
+      "type": "pagefly-section",
+      "name": "PageFly Section",
+      "settings": {
+        "section_id": "pf-94452416"
+      }
     },
-    "order": [
-        "pagefly_section_7ir4bp",
-        "main",
-        "related-products",
-        "featured_collection_tpCgJ7",
-        "1747730875fce4889b",
-        "1750137787748b89f9"
-    ]
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_FeX6ih": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory_FcmqQ7": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "variant_picker_yhD3cy": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
+          }
+        },
+        "shipping_info_MteFQc": {
+          "type": "shipping-info",
+          "settings": {
+            "delivery_start_date": 6,
+            "delivery_end_date": 8,
+            "si_shipping_text": "Free standard shipping over ₱249",
+            "delivery_country": "PH"
+          }
+        },
+        "shipping_info_qhVEga": {
+          "type": "shipping-info",
+          "settings": {
+            "delivery_start_date": 3,
+            "delivery_end_date": 5,
+            "si_shipping_text": "Free standard shipping over $10",
+            "delivery_country": "US"
+          }
+        },
+        "shipping_info_9JNrrn": {
+          "type": "shipping-info",
+          "settings": {
+            "delivery_start_date": 6,
+            "delivery_end_date": 8,
+            "si_shipping_text": "Free standard shipping over ¥5",
+            "delivery_country": "JP"
+          }
+        },
+        "shipping_info_Hmg4NN": {
+          "type": "shipping-info",
+          "settings": {
+            "delivery_start_date": 6,
+            "delivery_end_date": 8,
+            "si_shipping_text": "Penghantaran standard percuma tamat S$30",
+            "delivery_country": "SG"
+          }
+        },
+        "quantity_selector_Dk3iPT": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_7g944h": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Product features",
+            "icon": "star",
+            "content": "<p>Test</p>",
+            "page": "product-features"
+          }
+        },
+        "collapsible-row-0": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Materials and care",
+            "icon": "leaf",
+            "content": "<p>Tet</p>",
+            "page": "materials-and-care"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_preview_badge_FeX6ih",
+        "price",
+        "inventory_FcmqQ7",
+        "variant_picker_yhD3cy",
+        "shipping_info_MteFQc",
+        "shipping_info_qhVEga",
+        "shipping_info_9JNrrn",
+        "shipping_info_Hmg4NN",
+        "quantity_selector_Dk3iPT",
+        "buy_buttons_7g944h",
+        "collapsible-row-1",
+        "collapsible-row-0"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
+        "media_position": "right",
+        "image_zoom": "hover",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "linear_bg_class": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "Other industry favorites",
+        "heading_size": "h2",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "padding_top": 36,
+        "padding_bottom": 44,
+        "linear_bg_class": ""
+      }
+    },
+    "featured_collection_tpCgJ7": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "add-ons-buy",
+        "products_to_show": 4,
+        "title": "Value Deals",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-70cc4989-4d35-4db0-9e5d-999e54fda56a",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 12,
+        "linear_bg_class": ""
+      }
+    },
+    "1747730875fce4889b": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_jCn4wW": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_jCn4wW"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1750137787748b89f9": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_Cn6CLN": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_Cn6CLN"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "pagefly_section_7ir4bp",
+    "main",
+    "related-products",
+    "featured_collection_tpCgJ7",
+    "1747730875fce4889b",
+    "1750137787748b89f9"
+  ]
 }

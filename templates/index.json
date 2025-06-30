@@ -1,405 +1,593 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "slideshow_HDbQAH": {
-            "type": "slideshow",
-            "blocks": {
-                "slide_k6mhqm": {
-                    "type": "slide",
-                    "settings": {
-                        "image": "shopify://shop_images/LIHGTNING_SUPER_MEGA_SALE_3.svg",
-                        "image_overlay_opacity": 0,
-                        "heading": "",
-                        "heading_size": "h1",
-                        "subheading": "",
-                        "button_label": "",
-                        "link": "",
-                        "button_style_secondary": false,
-                        "show_text_box": false,
-                        "box_align": "top-left",
-                        "text_alignment": "center",
-                        "text_alignment_mobile": "center",
-                        "color_scheme": "scheme-1"
-                    }
-                },
-                "slide_LKaKfG": {
-                    "type": "slide",
-                    "settings": {
-                        "image": "shopify://shop_images/LIHGTNING_SUPER_MEGA_SALE_4.svg",
-                        "image_overlay_opacity": 0,
-                        "heading": "",
-                        "heading_size": "h1",
-                        "subheading": "",
-                        "button_label": "",
-                        "link": "",
-                        "button_style_secondary": false,
-                        "show_text_box": false,
-                        "box_align": "middle-center",
-                        "text_alignment": "center",
-                        "text_alignment_mobile": "center",
-                        "color_scheme": "scheme-1"
-                    }
-                },
-                "slide_eaXbfw": {
-                    "type": "slide",
-                    "settings": {
-                        "image": "shopify://shop_images/LIHGTNING_SUPER_MEGA_SALE_5.svg",
-                        "image_overlay_opacity": 0,
-                        "heading": "",
-                        "heading_size": "h1",
-                        "subheading": "",
-                        "button_label": "",
-                        "link": "",
-                        "button_style_secondary": false,
-                        "show_text_box": false,
-                        "box_align": "middle-center",
-                        "text_alignment": "center",
-                        "text_alignment_mobile": "center",
-                        "color_scheme": "scheme-1"
-                    }
-                }
-            },
-            "block_order": [
-                "slide_k6mhqm",
-                "slide_LKaKfG",
-                "slide_eaXbfw"
+  "sections": {
+    "17512520663551ac8e": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_10b4441_tFcJfz": {
+          "type": "ai_gen_block_10b4441",
+          "settings": {
+            "section1_text": "SALE ITEMS",
+            "section1_link": "shopify://pages/mega-sale",
+            "section2_text": "FREE SHIPPING",
+            "section2_link": "shopify://pages/free-shipping",
+            "section3_text": "TOP TRENDS",
+            "section3_link": "shopify://pages/collection-bundle",
+            "background_color": "#e4e4e4",
+            "text_color": "#001128",
+            "icon_color": "#001128",
+            "divider_color": "#33ff18",
+            "hover_color": "#e4e4e4"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_10b4441_tFcJfz"
+      ],
+      "settings": {}
+    },
+    "custom_multicolumn_c8hjXa": {
+      "type": "custom-multicolumn",
+      "blocks": {
+        "column_hC9UKY": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/okis-dresses"
+          }
+        },
+        "column_XBKinK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Untitled_Design_5.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_UxaKAx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses_4.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://products/auracharm"
+          }
+        },
+        "column_6eK44E": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses_1.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_LdqLLL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses_2.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://products/bandnova"
+          }
+        }
+      },
+      "block_order": [
+        "column_hC9UKY",
+        "column_XBKinK",
+        "column_UxaKAx",
+        "column_6eK44E",
+        "column_LdqLLL"
+      ],
+      "custom_css": [
+        ".slider-buttons {display: none;}",
+        ".multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: -50px;}",
+        "@media screen and (max-width: 400px) {.multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: -50px; }}"
+      ],
+      "name": "Custom Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 5,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 8,
+        "padding_bottom": 4,
+        "linear_bg_class": ""
+      }
+    },
+    "custom_multicolumn_xyVwxF": {
+      "type": "custom-multicolumn",
+      "blocks": {
+        "column_3VRakC": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/okis-dresses"
+          }
+        },
+        "column_FfEz74": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses_4.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://products/auracharm"
+          }
+        },
+        "column_t7Xk8T": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses_1.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Q6fyKy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/O_kis_Dresses_2.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://products/bandnova"
+          }
+        }
+      },
+      "block_order": [
+        "column_3VRakC",
+        "column_FfEz74",
+        "column_t7Xk8T",
+        "column_Q6fyKy"
+      ],
+      "custom_css": [
+        ".slider-buttons {display: none;}",
+        ".multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: -50px;}",
+        "@media screen and (max-width: 400px) {.multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: -50px; }}"
+      ],
+      "name": "Custom Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 4,
+        "linear_bg_class": ""
+      }
+    },
+    "17511775781a4fc74b": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6822898_W7rcCf": {
+          "type": "ai_gen_block_6822898",
+          "settings": {
+            "background_color": "#e5bd94",
+            "border_radius": 0,
+            "divider_color": "#151414",
+            "feature_1_enabled": true,
+            "feature_1_icon": "shield",
+            "feature_1_text": "Secure",
+            "feature_2_enabled": true,
+            "feature_2_icon": "credit-card",
+            "feature_2_text": "Safe",
+            "feature_3_enabled": true,
+            "feature_3_icon": "truck",
+            "feature_3_text": "Delivery",
+            "cta_text": "Why Choose Us",
+            "cta_link": "shopify://pages/about-us",
+            "text_size": 16,
+            "text_weight": "400",
+            "title_size": 16,
+            "title_weight": "600",
+            "icon_size": 20,
+            "icon_color": "#151414",
+            "text_color": "#151414",
+            "title_color": "#d40c15",
+            "arrow_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6822898_W7rcCf"
+      ],
+      "settings": {}
+    },
+    "1751261827e80736c2": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_a5f47a7_YM7myY": {
+          "type": "ai_gen_block_a5f47a7",
+          "settings": {
+            "heading": "",
+            "heading_font_size": 16,
+            "heading_font_weight": "700",
+            "heading_color": "#333333",
+            "heading_spacing": 8,
+            "background_color": "#f8f9fa",
+            "container_padding": 8,
+            "container_border_radius": 10,
+            "tab_spacing": 14,
+            "tab_background_color": "#001128",
+            "tab_text_color": "#ffffff",
+            "tab_border_color": "#d49d0c",
+            "tab_border_width": 1,
+            "tab_border_radius": 4,
+            "tab_padding_horizontal": 32,
+            "tab_padding_vertical": 10,
+            "tab_font_size": 15,
+            "tab_font_weight": "500",
+            "tab_hover_background_color": "#f0f0f0",
+            "tab_hover_text_color": "#000000",
+            "tab_hover_border_color": "#cccccc",
+            "tab_active_background_color": "#001128",
+            "tab_active_text_color": "#ffffff",
+            "tab_active_border_color": "#d49d0c",
+            "tab_1_enabled": true,
+            "tab_1_text": "Free Shipping",
+            "tab_1_link": "shopify://pages/mega-sale",
+            "tab_2_enabled": true,
+            "tab_2_text": "Super Sale",
+            "tab_2_link": "",
+            "tab_3_enabled": true,
+            "tab_3_text": "All under ₱199",
+            "tab_3_link": "",
+            "tab_4_enabled": true,
+            "tab_4_text": "Clearance Sale",
+            "tab_4_link": "",
+            "tab_5_enabled": true,
+            "tab_5_text": "🔥Brands Sale",
+            "tab_5_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_a5f47a7_YM7myY"
+      ],
+      "settings": {}
+    },
+    "1751259695ca61e72b": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ffa427b_KiRA7q": {
+          "type": "ai_gen_block_ffa427b",
+          "settings": {
+            "heading": "HOT DEALS 30%",
+            "product_list": [
+              "female-black-tops",
+              "bracelet-set-boho",
+              "crop-tops-black-bear-logo",
+              "fashion-12",
+              "gem-watch",
+              "glimgold",
+              "beamgleam",
+              "okis-black-tee-tops-for-female-heart-design",
+              "lushgleam",
+              "okis-black-tee-tops-for-female-kingdom-life",
+              "glowgleam",
+              "goldgold"
             ],
-            "name": "t:sections.slideshow.presets.name",
-            "settings": {
-                "layout": "full_bleed",
-                "slide_height": "adapt_image",
-                "slider_visual": "dots",
-                "auto_rotate": false,
-                "change_slides_speed": 5,
-                "image_behavior": "none",
-                "show_text_below": false,
-                "accessibility_info": "Slideshow about our brand",
-                "linear_bg_class": ""
-            }
-        },
-        "rich_text": {
-            "type": "rich-text",
-            "blocks": {
-                "text": {
-                    "type": "text",
-                    "settings": {
-                        "text": "<h4><a href=\"/pages/mega-sale\" title=\"Mega Sale\"><strong>Super Mega Sales</strong></a><strong> | </strong><a href=\"/pages/free-shipping\" title=\"Free Shipping\"><strong>Free Shipping</strong></a></h4>"
-                    }
-                }
-            },
-            "block_order": [
-                "text"
-            ],
-            "settings": {
-                "desktop_content_position": "center",
-                "content_alignment": "center",
-                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
-                "full_width": true,
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "linear_bg_class": ""
-            }
-        },
-        "featured_collection_CB6pte": {
-            "type": "featured-collection",
-            "name": "t:sections.featured-collection.presets.name",
-            "settings": {
-                "collection": "female-top-cotton-longsleeve",
-                "products_to_show": 13,
-                "title": "<strong>Recommendation</strong>",
-                "heading_size": "h1",
-                "description": "",
-                "show_description": false,
-                "description_style": "uppercase",
-                "columns_desktop": 6,
-                "enable_desktop_slider": false,
-                "full_width": false,
-                "show_view_all": false,
-                "view_all_style": "solid",
-                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
-                "image_ratio": "adapt",
-                "image_shape": "default",
-                "show_secondary_image": true,
-                "show_vendor": true,
-                "show_rating": false,
-                "quick_add": "none",
-                "columns_mobile": "2",
-                "swipe_on_mobile": false,
-                "padding_top": 16,
-                "padding_bottom": 0,
-                "linear_bg_class": ""
-            }
-        },
-        "pagefly_section_wNP9cm": {
-            "type": "pagefly-section",
-            "name": "PageFly Section",
-            "settings": {
-                "section_id": "pf-94452416"
-            }
-        },
-        "pagefly_section_RiMBne": {
-            "type": "pagefly-section",
-            "name": "PageFly Section",
-            "settings": {
-                "section_id": "pf-94452416"
-            }
-        },
+            "view_all_text": "View All",
+            "view_all_url": "shopify://pages/mega-sale",
+            "show_pagination": true,
+            "heading_size": 28,
+            "border_radius": 8,
+            "text_color": "#ff5415",
+            "price_color": "#001128",
+            "link_color": "#3498db",
+            "accent_color": "#3498db",
+            "card_background": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ffa427b_KiRA7q"
+      ],
+      "settings": {}
+    },
+    "featured_collection_CB6pte": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "okis-cotton-toupe-longsleeves",
+        "products_to_show": 18,
+        "title": "<strong>Recommendation</strong>",
+        "heading_size": "h2",
+        "description": "<h6><em><strong>Best Value Deals</strong></em></h6>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 6,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "outline",
+        "color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 12,
+        "linear_bg_class": ""
+      }
+    },
+    "featured_collection1": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "settings": {
+        "collection": "okis-cotton-toupe-longsleeves",
+        "products_to_show": 16,
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 6,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "linear_bg_class": ""
+      }
+    },
+    "featured_collection2": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "settings": {
+        "collection": "new-arrivals",
+        "products_to_show": 4,
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 32,
+        "linear_bg_class": ""
+      }
+    },
+    "collection_list": {
+      "type": "collection-list",
+      "blocks": {
         "featured_collection1": {
-            "type": "featured-collection",
-            "custom_css": [],
-            "settings": {
-                "collection": "okis-cotton-toupe-longsleeves",
-                "products_to_show": 16,
-                "title": "",
-                "heading_size": "h1",
-                "description": "",
-                "show_description": false,
-                "description_style": "body",
-                "columns_desktop": 6,
-                "enable_desktop_slider": false,
-                "full_width": false,
-                "show_view_all": false,
-                "view_all_style": "solid",
-                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
-                "image_ratio": "adapt",
-                "image_shape": "default",
-                "show_secondary_image": true,
-                "show_vendor": false,
-                "show_rating": true,
-                "quick_add": "none",
-                "columns_mobile": "2",
-                "swipe_on_mobile": false,
-                "padding_top": 16,
-                "padding_bottom": 0,
-                "linear_bg_class": ""
-            }
-        },
-        "multicolumn1": {
-            "type": "multicolumn",
-            "blocks": {
-                "column7": {
-                    "type": "column",
-                    "settings": {
-                        "title": "",
-                        "text": "<h5><strong>Mia R. – Fashion Blogger<br/></strong><em>\"I’ve tried a lot of online brands, but Okis Collabs is on another level. The </em><em><strong>long sleeve Curiosity</strong></em><em> top is a subtle head-turner—lightweight yet stylish. I paired it with boots and got compliments all day. The </em><em><strong>crop top White Ribbon</strong></em><em> is clean and chic—perfect for brunch or a casual shoot. Definitely staying in my rotation this season!\"</em></h5>",
-                        "link_label": "Shop now",
-                        "link": "shopify://collections/women"
-                    }
-                },
-                "column8": {
-                    "type": "column",
-                    "settings": {
-                        "title": "",
-                        "text": "<h4><strong>@SamanthaStyles<br/></strong><em>\"I absolutely LOVE everything I got from Okis Collabs! The </em><em><strong>long sleeve Brooklyn</strong></em><em> is my new favorite—super comfy and gives that effortlessly cool, street-style vibe. The </em><em><strong>long sleeve Curiosity</strong></em><em> is perfect for chill days but still makes a statement. I wore it out once and got asked where I got it—twice!\"</em></h4>",
-                        "link_label": "Shop now",
-                        "link": ""
-                    }
-                },
-                "column9": {
-                    "type": "column",
-                    "settings": {
-                        "title": "",
-                        "text": "<h5><strong>Jordan T. – College Student<br/></strong><em>\"As someone who lives in crop tops, I was blown away by the </em><em><strong>Black Bear crop</strong></em><em>. It's bold without trying too hard, and the fit is 🔥. I also picked up the </em><em><strong>Brooklyn long sleeve</strong></em><em> and it’s perfect for layering in class or going out. Really impressed by the quality and the fit—Okis Collabs nailed it.\"</em></h5>",
-                        "link_label": "Shop now",
-                        "link": ""
-                    }
-                },
-                "column10": {
-                    "type": "column",
-                    "settings": {
-                        "title": "",
-                        "text": "<h5><strong>Elle C. – Creative Director<br/></strong><em>\"The entire haul from Okis Collabs felt curated just for me. The </em><em><strong>White Ribbon crop top</strong></em><em> balances simplicity and style, while the </em><em><strong>Curiosity long sleeve</strong></em><em> adds an artistic flair to my wardrobe. The </em><em><strong>Brooklyn piece</strong></em><em>? That one’s a staple now. It layers well and gives my outfits a cool urban edge. Totally coming back for more!\"</em></h5>",
-                        "link_label": "Shop now",
-                        "link": ""
-                    }
-                }
-            },
-            "block_order": [
-                "column7",
-                "column8",
-                "column9",
-                "column10"
-            ],
-            "disabled": true,
-            "settings": {
-                "title": "",
-                "heading_size": "h1",
-                "image_width": "full",
-                "image_ratio": "adapt",
-                "button_label": "",
-                "button_link": "",
-                "columns_desktop": 4,
-                "column_alignment": "center",
-                "background_style": "none",
-                "color_scheme": "scheme-bf258355-28e8-4f18-a9bb-f5cb7d0a6837",
-                "columns_mobile": "1",
-                "swipe_on_mobile": true,
-                "padding_top": 68,
-                "padding_bottom": 68,
-                "linear_bg_class": ""
-            }
+          "type": "featured_collection",
+          "settings": {
+            "collection": "women"
+          }
         },
         "featured_collection2": {
-            "type": "featured-collection",
-            "custom_css": [],
-            "settings": {
-                "collection": "new-arrivals",
-                "products_to_show": 4,
-                "title": "",
-                "heading_size": "h1",
-                "description": "",
-                "show_description": false,
-                "description_style": "body",
-                "columns_desktop": 5,
-                "enable_desktop_slider": false,
-                "full_width": false,
-                "show_view_all": true,
-                "view_all_style": "solid",
-                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
-                "image_ratio": "adapt",
-                "image_shape": "default",
-                "show_secondary_image": true,
-                "show_vendor": false,
-                "show_rating": true,
-                "quick_add": "none",
-                "columns_mobile": "2",
-                "swipe_on_mobile": false,
-                "padding_top": 0,
-                "padding_bottom": 32,
-                "linear_bg_class": ""
-            }
+          "type": "featured_collection",
+          "settings": {
+            "collection": "men"
+          }
         },
-        "collection_list": {
-            "type": "collection-list",
-            "blocks": {
-                "featured_collection1": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "women"
-                    }
-                },
-                "featured_collection2": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "men"
-                    }
-                },
-                "featured_collection3": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "best-selling"
-                    }
-                },
-                "featured_collection4": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "new-arrivals"
-                    }
-                },
-                "featured_collection5": {
-                    "type": "featured_collection",
-                    "settings": {
-                        "collection": "all"
-                    }
-                }
-            },
-            "block_order": [
-                "featured_collection1",
-                "featured_collection2",
-                "featured_collection3",
-                "featured_collection4",
-                "featured_collection5"
-            ],
-            "custom_css": [],
-            "settings": {
-                "title": "<strong>Shop our top categories</strong>",
-                "heading_size": "h1",
-                "image_ratio": "portrait",
-                "columns_desktop": 5,
-                "color_scheme": "scheme-645c12e4-267e-4fd3-a454-d6bfb847526d",
-                "show_view_all": false,
-                "columns_mobile": "2",
-                "swipe_on_mobile": false,
-                "padding_top": 48,
-                "padding_bottom": 60,
-                "linear_bg_class": ""
-            }
+        "featured_collection3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "best-selling"
+          }
         },
-        "multicolumn2": {
-            "type": "multicolumn",
-            "blocks": {
-                "column11": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Add educational content",
-                        "text": "<p>Provide content for your customers that sets their business up for success</p>",
-                        "link_label": "Read now",
-                        "link": ""
-                    }
-                },
-                "column12": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Add educational content",
-                        "text": "<p>Provide content for your customers that sets their business up for success</p>",
-                        "link_label": "Read now",
-                        "link": ""
-                    }
-                },
-                "column13": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Add educational content",
-                        "text": "<p>Provide content for your customers that sets their business up for success</p>",
-                        "link_label": "Read now",
-                        "link": ""
-                    }
-                },
-                "column14": {
-                    "type": "column",
-                    "settings": {
-                        "title": "Add educational content",
-                        "text": "<p>Provide content for your customers that sets their business up for success</p>",
-                        "link_label": "Read now",
-                        "link": ""
-                    }
-                }
-            },
-            "block_order": [
-                "column11",
-                "column12",
-                "column13",
-                "column14"
-            ],
-            "disabled": true,
-            "settings": {
-                "title": "You're set up for success",
-                "heading_size": "h2",
-                "image_width": "full",
-                "image_ratio": "adapt",
-                "button_label": "",
-                "button_link": "",
-                "columns_desktop": 4,
-                "column_alignment": "left",
-                "background_style": "primary",
-                "color_scheme": "scheme-af237c41-4c89-4187-867b-88f7e47e8d81",
-                "columns_mobile": "1",
-                "swipe_on_mobile": false,
-                "padding_top": 44,
-                "padding_bottom": 48,
-                "linear_bg_class": ""
-            }
+        "featured_collection4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "new-arrivals"
+          }
+        },
+        "featured_collection5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all"
+          }
         }
-    },
-    "order": [
-        "slideshow_HDbQAH",
-        "pagefly_section_RiMBne",
-        "rich_text",
-        "featured_collection_CB6pte",
-        "pagefly_section_wNP9cm",
+      },
+      "block_order": [
         "featured_collection1",
-        "multicolumn1",
         "featured_collection2",
-        "collection_list",
-        "multicolumn2"
-    ]
+        "featured_collection3",
+        "featured_collection4",
+        "featured_collection5"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "<strong>Shop our top categories</strong>",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 60,
+        "linear_bg_class": ""
+      }
+    },
+    "1751075081cbdad7ec": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "175108235771b4d1db": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_multicolumn_mwh9DB": {
+      "type": "custom-multicolumn",
+      "blocks": {
+        "column_9dzqfW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_12.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/mega-sale"
+          }
+        },
+        "column_eki9g9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Untitled_Design_7.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_jz7fNb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Untitled_Design_8.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Q8Fjrr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Untitled_Design_10.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ERjAk7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Untitled_Design_9.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_9dzqfW",
+        "column_eki9g9",
+        "column_jz7fNb",
+        "column_Q8Fjrr",
+        "column_ERjAk7"
+      ],
+      "custom_css": [
+        ".slider-buttons {display: none;}",
+        ".multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: 40px;}",
+        "@media screen and (max-width: 400px) {.multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--full-width.multicolumn-card-spacing {padding-right: -10px; }}"
+      ],
+      "name": "Custom Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "circle",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 5,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 12,
+        "padding_bottom": 8,
+        "linear_bg_class": ""
+      }
+    },
+    "17512539712d404f66": {
+      "type": "_blocks",
+      "settings": {}
+    }
+  },
+  "order": [
+    "17512520663551ac8e",
+    "custom_multicolumn_c8hjXa",
+    "custom_multicolumn_xyVwxF",
+    "17511775781a4fc74b",
+    "1751261827e80736c2",
+    "1751259695ca61e72b",
+    "featured_collection_CB6pte",
+    "featured_collection1",
+    "featured_collection2",
+    "collection_list",
+    "1751075081cbdad7ec",
+    "175108235771b4d1db",
+    "custom_multicolumn_mwh9DB",
+    "17512539712d404f66"
+  ]
 }
