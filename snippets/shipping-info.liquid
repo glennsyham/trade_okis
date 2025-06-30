@@ -96,7 +96,7 @@
           </small>
         </div>
       </li>
-      <li class="product-info__item">
+      <li class="product-info__item {% if  block.settings.hide_shipping_cod %} visually-hidden{% endif %}">
         <span class="icon-wrapper">
           {{ 'icon-box.svg' | inline_asset_content }}
         </span>
@@ -105,7 +105,7 @@
           <small>Cash on delivery available. Learn more.</small>
         </div>
       </li>
-      <li class="product-info__item">
+      <li class="product-info__item {% if  block.settings.hide_shipping_return %} visually-hidden{% endif %}">
         <span class="icon-wrapper">
           {{ 'icon-return.svg' | inline_asset_content }}
         </span>
