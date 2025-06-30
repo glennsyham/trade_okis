@@ -1,0 +1,596 @@
+{% doc %}
+  @prompt
+    Optimize this Super Deals section code: Add responsive height adjustments (mobile auto-height, desktop optimized, tablet improved), move "View All" to upper right corner, center section on desktop, implement seamless pagination with smooth scrolling, optimize product image fitting in 132x175px containers with proper aspect ratio, improve vertical spacing with image-title-pricing stack, add responsive breakpoints for mobile/tablet/desktop, implement auto-adjusting container heights, ensure pricing visibility, and add smooth horizontal scrolling with pagination dots that update based on scroll position. Include fallback images and proper box-sizing for all elements., THIS HTML IS OKAY BUT CAN U MAKE THE DESKTOP VIEW PRODUCT CARDS IS IN CENTER, MAKE THE SUPER DEALS TEXT INTO THE CENTER LEFT AND THE VIEW BUTTON INTO THE CENTER RIGHT, CAN U ALIGN THE TEXT HEADING AND VIEW BUTTON INTO THE CENTER ALIGNED WITH THE PRODUCT CARDS
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-super-deals-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .ai-super-deals-header-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .ai-super-deals-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-super-deals-view-all-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-super-deals-view-all-{{ ai_gen_id }}:hover {
+    opacity: 0.8;
+  }
+
+  .ai-super-deals-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+  }
+
+  .ai-super-deals-scroll-wrapper-{{ ai_gen_id }} {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 10px;
+  }
+
+  .ai-super-deals-scroll-wrapper-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-super-deals-grid-{{ ai_gen_id }} {
+    display: flex;
+    gap: 16px;
+    min-width: max-content;
+    padding: 0 4px;
+  }
+
+  .ai-super-deals-product-{{ ai_gen_id }} {
+    flex: 0 0 auto;
+    width: 132px;
+    background: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .ai-super-deals-product-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-super-deals-image-wrapper-{{ ai_gen_id }} {
+    width: 132px;
+    height: 175px;
+    position: relative;
+    overflow: hidden;
+    background: #f8f8f8;
+  }
+
+  .ai-super-deals-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-super-deals-product-{{ ai_gen_id }}:hover .ai-super-deals-image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-super-deals-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4;
+  }
+
+  .ai-super-deals-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+  }
+
+  .ai-super-deals-content-{{ ai_gen_id }} {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 80px;
+    box-sizing: border-box;
+  }
+
+  .ai-super-deals-product-title-{{ ai_gen_id }} {
+    font-size: 13px;
+    font-weight: 500;
+    color: {{ block.settings.text_color }};
+    line-height: 1.3;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+  }
+
+  .ai-super-deals-price-wrapper-{{ ai_gen_id }} {
+    margin-top: auto;
+  }
+
+  .ai-super-deals-price-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ block.settings.price_color }};
+    margin: 0;
+  }
+
+  .ai-super-deals-compare-price-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 4px;
+  }
+
+  .ai-super-deals-pagination-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .ai-super-deals-dot-{{ ai_gen_id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .ai-super-deals-dot-{{ ai_gen_id }}.active {
+    background: {{ block.settings.accent_color }};
+    transform: scale(1.2);
+  }
+
+  .ai-super-deals-content-wrapper-{{ ai_gen_id }} {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-super-deals-{{ ai_gen_id }} {
+      padding: 16px;
+    }
+
+    .ai-super-deals-header-{{ ai_gen_id }} {
+      margin-bottom: 16px;
+    }
+
+    .ai-super-deals-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.85 }}px;
+    }
+
+    .ai-super-deals-view-all-{{ ai_gen_id }} {
+      font-size: 13px;
+    }
+
+    .ai-super-deals-grid-{{ ai_gen_id }} {
+      gap: 12px;
+    }
+
+    .ai-super-deals-product-{{ ai_gen_id }} {
+      width: 120px;
+    }
+
+    .ai-super-deals-image-wrapper-{{ ai_gen_id }} {
+      width: 120px;
+      height: 160px;
+    }
+
+    .ai-super-deals-content-{{ ai_gen_id }} {
+      padding: 10px;
+      min-height: 70px;
+    }
+
+    .ai-super-deals-product-title-{{ ai_gen_id }} {
+      font-size: 12px;
+    }
+
+    .ai-super-deals-price-{{ ai_gen_id }} {
+      font-size: 13px;
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 999px) {
+    .ai-super-deals-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+
+    .ai-super-deals-grid-{{ ai_gen_id }} {
+      gap: 14px;
+    }
+
+    .ai-super-deals-product-{{ ai_gen_id }} {
+      width: 128px;
+    }
+
+    .ai-super-deals-image-wrapper-{{ ai_gen_id }} {
+      width: 128px;
+      height: 170px;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .ai-super-deals-{{ ai_gen_id }} {
+      padding: 32px;
+    }
+
+    /* Center the products on desktop */
+    .ai-super-deals-scroll-wrapper-{{ ai_gen_id }} {
+      display: flex;
+      justify-content: center;
+    }
+
+    .ai-super-deals-grid-{{ ai_gen_id }} {
+      justify-content: center;
+      flex-wrap: wrap;
+      min-width: auto;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Adjust for wrapped layout on desktop */
+    .ai-super-deals-product-{{ ai_gen_id }} {
+      margin-bottom: 16px;
+    }
+  }
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+{% endstyle %}
+
+<super-deals-{{ ai_gen_id }} class="ai-super-deals-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-super-deals-content-wrapper-{{ ai_gen_id }}">
+    <div class="ai-super-deals-header-{{ ai_gen_id }}">
+      <h2 class="ai-super-deals-title-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+      {% if block.settings.view_all_url != blank %}
+        <a href="{{ block.settings.view_all_url }}" class="ai-super-deals-view-all-{{ ai_gen_id }}">
+          {{ block.settings.view_all_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="ai-super-deals-container-{{ ai_gen_id }}">
+    <div class="ai-super-deals-scroll-wrapper-{{ ai_gen_id }}" data-scroll-container>
+      <div class="ai-super-deals-grid-{{ ai_gen_id }}">
+        {% for product in block.settings.product_list %}
+          <div class="ai-super-deals-product-{{ ai_gen_id }}">
+            <a href="{{ product.url }}" class="ai-super-deals-link-{{ ai_gen_id }}">
+              <div class="ai-super-deals-image-wrapper-{{ ai_gen_id }}">
+                {% assign media_type = 'image' %}
+                {% assign media_src = product.featured_media.preview_image | img_url: '600x' %}
+
+                {% for media in product.media %}
+                  {% if media.media_type == 'video' or media.media_type == 'external_video' %}
+                    {% assign media_type = media.media_type %}
+                    {% assign media_src = media.sources[1].url %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+
+                {% if media_type == 'video' or media_type == 'external_video' %}
+                  <video
+                    class="ai-product-showcase__media-{{ ai_gen_id }}"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    src="{{ media_src }}"
+                  ></video>
+                {% elsif product.featured_image %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 264 }}"
+                    alt="{{ product.featured_image.alt | escape }}"
+                    class="ai-super-deals-image-{{ ai_gen_id }}"
+                    loading="lazy"
+                    width="132"
+                    height="175"
+                  >
+                {% else %}
+                  <div class="ai-super-deals-image-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="ai-super-deals-content-{{ ai_gen_id }}">
+                <h3 class="ai-super-deals-product-title-{{ ai_gen_id }}">{{ product.title }}</h3>
+                <div class="ai-super-deals-price-wrapper-{{ ai_gen_id }}">
+                  <div class="ai-super-deals-price-{{ ai_gen_id }}">
+                    {{ product.price | money }}
+                    {% if product.compare_at_price > product.price %}
+                      <span class="ai-super-deals-compare-price-{{ ai_gen_id }}">
+                        {{ product.compare_at_price | money }}
+                      </span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if block.settings.show_pagination and block.settings.product_list.size > 3 %}
+      <div class="ai-super-deals-pagination-{{ ai_gen_id }}" data-pagination></div>
+    {% endif %}
+  </div>
+</super-deals-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SuperDeals{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.scrollContainer = null;
+        this.pagination = null;
+        this.dots = [];
+        this.isScrolling = false;
+        this.isDesktop = window.innerWidth >= 1000;
+      }
+
+      connectedCallback() {
+        this.scrollContainer = this.querySelector('[data-scroll-container]');
+        this.pagination = this.querySelector('[data-pagination]');
+
+        if (this.scrollContainer && this.pagination) {
+          // Only initialize pagination for mobile and tablet
+          if (!this.isDesktop) {
+            this.initializePagination();
+            this.setupScrollListener();
+          } else {
+            // Hide pagination on desktop since we're using a wrapped layout
+            this.pagination.style.display = 'none';
+          }
+        }
+
+        // Add resize listener to handle responsive changes
+        window.addEventListener('resize', this.handleResize.bind(this));
+      }
+
+      handleResize() {
+        const wasDesktop = this.isDesktop;
+        this.isDesktop = window.innerWidth >= 1000;
+
+        // If we've crossed the desktop threshold, reinitialize
+        if (wasDesktop !== this.isDesktop && this.pagination) {
+          if (this.isDesktop) {
+            this.pagination.style.display = 'none';
+          } else {
+            this.pagination.style.display = 'flex';
+            this.initializePagination();
+            this.setupScrollListener();
+          }
+        }
+      }
+
+      initializePagination() {
+        const products = this.querySelectorAll('.ai-super-deals-product-{{ ai_gen_id }}');
+        const containerWidth = this.scrollContainer.clientWidth;
+        const productWidth = 132 + 16;
+        const visibleProducts = Math.floor(containerWidth / productWidth);
+        const totalPages = Math.ceil(products.length / Math.max(1, visibleProducts - 1));
+
+        if (totalPages <= 1) {
+          this.pagination.style.display = 'none';
+          return;
+        }
+
+        this.pagination.innerHTML = '';
+        this.dots = [];
+
+        for (let i = 0; i < totalPages; i++) {
+          const dot = document.createElement('div');
+          dot.className = 'ai-super-deals-dot-{{ ai_gen_id }}';
+          if (i === 0) dot.classList.add('active');
+
+          dot.addEventListener('click', () => this.scrollToPage(i));
+          this.pagination.appendChild(dot);
+          this.dots.push(dot);
+        }
+      }
+
+      setupScrollListener() {
+        let scrollTimeout;
+
+        this.scrollContainer.addEventListener('scroll', () => {
+          if (this.isScrolling) return;
+
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            this.updateActiveDot();
+          }, 100);
+        });
+      }
+
+      scrollToPage(pageIndex) {
+        if (this.isScrolling || this.isDesktop) return;
+
+        this.isScrolling = true;
+        const containerWidth = this.scrollContainer.clientWidth;
+        const productWidth = 132 + 16;
+        const visibleProducts = Math.floor(containerWidth / productWidth);
+        const scrollDistance = pageIndex * (visibleProducts - 1) * productWidth;
+
+        this.scrollContainer.scrollTo({
+          left: scrollDistance,
+          behavior: 'smooth'
+        });
+
+        this.updateActiveDot(pageIndex);
+
+        setTimeout(() => {
+          this.isScrolling = false;
+        }, 500);
+      }
+
+      updateActiveDot(activeIndex = null) {
+        if (this.isDesktop || !this.dots.length) return;
+
+        if (activeIndex === null) {
+          const scrollLeft = this.scrollContainer.scrollLeft;
+          const containerWidth = this.scrollContainer.clientWidth;
+          const productWidth = 132 + 16;
+          const visibleProducts = Math.floor(containerWidth / productWidth);
+          activeIndex = Math.round(scrollLeft / ((visibleProducts - 1) * productWidth));
+        }
+
+        this.dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === activeIndex);
+        });
+      }
+    }
+
+    customElements.define('super-deals-{{ ai_gen_id }}', SuperDeals{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Super Deals Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Super Deals"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products",
+      "limit": 20
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all text",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View all link"
+    },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination dots",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#3498db"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#3498db"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Super Deals Section"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}
