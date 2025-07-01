@@ -170,7 +170,7 @@
             {% for product in collection.products limit: section.settings.products_per_category %}
               <div class="product-card-{{ ai_gen_id }}" data-category="{{ cat }}">
                 <a href="{{ product.url }}">
-                  <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                  <div class="product-card-image-wrapper-{{ ai_gen_id }} ">
                     {% if product.featured_image %}
                       <img
                         src="{{ product.featured_image | image_url: width: 264 }}"
@@ -184,6 +184,17 @@
                       <div class="product-card-placeholder-{{ ai_gen_id }}">
                         {{ 'product-apparel-1' | placeholder_svg_tag }}
                       </div>
+                    {% endif %}
+
+                    {%- if product.media[1] != null %}
+                      <img
+                        src="{{ product.media[1] | image_url: width: 264 }}"
+                        alt="{{ product.media[1].alt}}"
+                        loading="lazy"
+                        width="132"
+                        height="175"
+                        class="product-card-image-{{ ai_gen_id }}"
+                      >
                     {% endif %}
                   </div>
                 </a>
