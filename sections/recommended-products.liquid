@@ -1,4 +1,4 @@
-{% assign ai_gen_id = 'ai_gen_block_2f5b290' | replace: '_', '' | downcase %}
+{% assign ai_gen_id = 'aigenblock2f5b290' %}
 
 {% style %}
   .product-tabs-{{ ai_gen_id }} {
@@ -6,12 +6,10 @@
     padding: 0 20px;
     max-width: 100%;
   }
-
   .product-tabs-container-{{ ai_gen_id }} {
     max-width: {{ section.settings.container_width }}px;
     margin: 0 auto;
   }
-
   .tab-container-{{ ai_gen_id }} {
     display: flex;
     justify-content: center;
@@ -19,7 +17,6 @@
     margin-bottom: 30px;
     gap: 8px;
   }
-
   .tab-button-{{ ai_gen_id }} {
     padding: 10px 20px;
     background-color: {{ section.settings.tab_bg_color }};
@@ -31,43 +28,36 @@
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
   }
-
   .tab-button-{{ ai_gen_id }}.active {
     background-color: {{ section.settings.tab_active_bg_color }};
     color: {{ section.settings.tab_active_text_color }};
   }
-
   .tab-button-{{ ai_gen_id }}:hover {
     background-color: {{ section.settings.tab_hover_bg_color }};
     color: {{ section.settings.tab_hover_text_color }};
   }
-
   .products-grid-{{ ai_gen_id }} {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: {{ section.settings.grid_gap }}px;
     margin: 0 auto;
   }
-
   @media screen and (min-width: 750px) {
     .products-grid-{{ ai_gen_id }} {
       grid-template-columns: repeat(3, 1fr);
     }
   }
-
   @media screen and (min-width: 990px) {
     .products-grid-{{ ai_gen_id }} {
       grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
     }
   }
-
   .product-card-{{ ai_gen_id }} {
     display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
   }
-
   .product-card-image-wrapper-{{ ai_gen_id }} {
     position: relative;
     margin-bottom: 12px;
@@ -76,41 +66,21 @@
     aspect-ratio: 132/175;
     width: 100%;
   }
-
   .product-card-image-{{ ai_gen_id }} {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
-
   .product-card-{{ ai_gen_id }}:hover .product-card-image-{{ ai_gen_id }} {
     transform: scale(1.05);
   }
-
-  .product-card-placeholder-{{ ai_gen_id }} {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
-    border-radius: {{ section.settings.image_border_radius }}px;
-  }
-
-  .product-card-placeholder-{{ ai_gen_id }} svg {
-    width: 50%;
-    height: 50%;
-    opacity: 0.5;
-  }
-
   .product-info-{{ ai_gen_id }} {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     gap: 6px;
   }
-
   .product-title-{{ ai_gen_id }} {
     font-size: {{ section.settings.title_font_size }}px;
     font-weight: 500;
@@ -118,27 +88,23 @@
     color: {{ section.settings.title_color }};
     line-height: 1.3;
   }
-
   .price-container-{{ ai_gen_id }} {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: auto;
   }
-
   .product-price-{{ ai_gen_id }} {
     font-size: {{ section.settings.price_font_size }}px;
     font-weight: 600;
     color: {{ section.settings.price_color }};
   }
-
   .compare-at-price-{{ ai_gen_id }} {
     text-decoration: line-through;
     color: {{ section.settings.compare_price_color }};
     margin-right: 8px;
     font-size: {{ section.settings.price_font_size | minus: 2 }}px;
   }
-
   .add-to-cart-button-{{ ai_gen_id }} {
     background-color: {{ section.settings.add_to_cart_bg_color }};
     color: {{ section.settings.add_to_cart_text_color }};
@@ -153,16 +119,13 @@
     transition: background-color 0.3s;
     padding: 0;
   }
-
   .add-to-cart-button-{{ ai_gen_id }}:hover {
     background-color: {{ section.settings.add_to_cart_hover_bg_color }};
   }
-
   .add-to-cart-button-{{ ai_gen_id }} svg {
     width: 18px;
     height: 18px;
   }
-
   .section-title-{{ ai_gen_id }} {
     text-align: center;
     margin-bottom: 20px;
@@ -170,436 +133,91 @@
     font-weight: 600;
     color: {{ section.settings.heading_color }};
   }
-
   .hidden-{{ ai_gen_id }} {
     display: none;
   }
 {% endstyle %}
+<div class="page-width">
+  <product-tabs-{{ ai_gen_id }} class="product-tabs-{{ ai_gen_id }}" {{ section.shopify_attributes }}>
+    <div class="product-tabs-container-{{ ai_gen_id }}">
+      {% if section.settings.heading != blank %}
+        <h2 class="section-title-{{ ai_gen_id }}">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% assign all_category = 'women,men,plus,kids,home,beauty' | split: ',' %}
 
-<product-tabs-{{ ai_gen_id }} class="product-tabs-{{ ai_gen_id }}" {{ section.shopify_attributes }}>
-  <div class="product-tabs-container-{{ ai_gen_id }}">
-    {% if section.settings.heading != blank %}
-      <h2 class="section-title-{{ ai_gen_id }}">{{ section.settings.heading }}</h2>
-    {% endif %}
+      <div class="tab-container-{{ ai_gen_id }}">
+        <button class="tab-button-{{ ai_gen_id }} active" data-category="all">
+          {{ section.settings.view_all_text }}
+        </button>
 
-    <div class="tab-container-{{ ai_gen_id }}">
-      <button class="tab-button-{{ ai_gen_id }} active" data-category="all">
-        {{ section.settings.view_all_text }}
-      </button>
-      {% if section.settings.women_category != blank %}
-        <button class="tab-button-{{ ai_gen_id }}" data-category="women">{{ section.settings.women_text }}</button>
-      {% endif %}
-      {% if section.settings.men_category != blank %}
-        <button class="tab-button-{{ ai_gen_id }}" data-category="men">{{ section.settings.men_text }}</button>
-      {% endif %}
-      {% if section.settings.plus_category != blank %}
-        <button class="tab-button-{{ ai_gen_id }}" data-category="plus">{{ section.settings.plus_text }}</button>
-      {% endif %}
-      {% if section.settings.kids_category != blank %}
-        <button class="tab-button-{{ ai_gen_id }}" data-category="kids">{{ section.settings.kids_text }}</button>
-      {% endif %}
-      {% if section.settings.home_category != blank %}
-        <button class="tab-button-{{ ai_gen_id }}" data-category="home">{{ section.settings.home_text }}</button>
-      {% endif %}
-      {% if section.settings.beauty_category != blank %}
-        <button class="tab-button-{{ ai_gen_id }}" data-category="beauty">{{ section.settings.beauty_text }}</button>
-      {% endif %}
+        {% for cat in all_category %}
+          {% assign text_key = cat | append: '_category' %}
+          {% assign text_label = cat | append: '_text' %}
+
+          {% assign collection = section.settings[text_key] %}
+          {% assign label = section.settings[text_label] %}
+          {% if collection != blank %}
+            <button class="tab-button-{{ ai_gen_id }}" data-category="{{ cat }}">{{ label }}</button>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="products-grid-{{ ai_gen_id }}">
+        {% for cat in all_category %}
+          {% assign text_key = cat | append: '_category' %}
+          {% assign collection = section.settings[text_key] %}
+          {% if collection != blank %}
+            {% for product in collection.products limit: section.settings.products_per_category %}
+              <div class="product-card-{{ ai_gen_id }}" data-category="{{ cat }}">
+                <a href="{{ product.url }}">
+                  <div class="product-card-image-wrapper-{{ ai_gen_id }}">
+                    {% if product.featured_image %}
+                      <img
+                        src="{{ product.featured_image | image_url: width: 264 }}"
+                        alt="{{ product.title }}"
+                        loading="lazy"
+                        width="132"
+                        height="175"
+                        class="product-card-image-{{ ai_gen_id }}"
+                      >
+                    {% else %}
+                      <div class="product-card-placeholder-{{ ai_gen_id }}">
+                        {{ 'product-apparel-1' | placeholder_svg_tag }}
+                      </div>
+                    {% endif %}
+                  </div>
+                </a>
+                <div class="product-info-{{ ai_gen_id }}">
+                  <h3 class="product-title-{{ ai_gen_id }}">
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </h3>
+                  <div class="price-container-{{ ai_gen_id }}">
+                    <div>
+                      {% if product.compare_at_price > product.price %}
+                        <span class="compare-at-price-{{ ai_gen_id }}"
+                          >₱{{ product.compare_at_price | money_without_currency -}}
+                        </span>
+                      {% endif %}
+                      <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                    </div>
+                    <button
+                      class="add-to-cart-button-{{ ai_gen_id }}"
+                      aria-label="Add {{ product.title }} to cart"
+                      data-product-id="{{ product.id }}"
+                      data-variant-id="{{ product.first_available_variant.id }}"
+                    >
+                      {{ 'icon-cart-round.svg' | inline_asset_content }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
-
-    <div class="products-grid-{{ ai_gen_id }}">
-      {% if section.settings.women_category != blank %}
-        {% for product in section.settings.women_category.products limit: section.settings.products_per_category %}
-          <div class="product-card-{{ ai_gen_id }}" data-category="women">
-            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
-              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
-                {% if product.featured_image != blank %}
-                  <img
-                    src="{{ product.featured_image | image_url: width: 264 }}"
-                    alt="{{ product.title | escape }}"
-                    loading="lazy"
-                    width="132"
-                    height="175"
-                    class="product-card-image-{{ ai_gen_id }}"
-                  >
-                {% else %}
-                  <div class="product-card-placeholder-{{ ai_gen_id }}">
-                    {{ 'product-apparel-1' | placeholder_svg_tag }}
-                  </div>
-                {% endif %}
-              </div>
-            </a>
-
-            <div class="product-info-{{ ai_gen_id }}">
-              <h3 class="product-title-{{ ai_gen_id }}">
-                <a href="{{ product.url }}">{{ product.title }}</a>
-              </h3>
-
-              <div class="price-container-{{ ai_gen_id }}">
-                <div class="product-price-wrapper-{{ ai_gen_id }}">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="compare-at-price-{{ ai_gen_id }}"
-                      >₱{{ product.compare_at_price | money_without_currency -}}
-                    </span>
-                  {% endif %}
-                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
-                </div>
-
-                <button
-                  class="add-to-cart-button-{{ ai_gen_id }}"
-                  aria-label="Add {{ product.title | escape }} to cart"
-                  data-product-id="{{ product.id }}"
-                  data-variant-id="{{ product.first_available_variant.id }}"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% if section.settings.men_category != blank %}
-        {% for product in section.settings.men_category.products limit: section.settings.products_per_category %}
-          <div class="product-card-{{ ai_gen_id }}" data-category="men">
-            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
-              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
-                {% if product.featured_image != blank %}
-                  <img
-                    src="{{ product.featured_image | image_url: width: 264 }}"
-                    alt="{{ product.title | escape }}"
-                    loading="lazy"
-                    width="132"
-                    height="175"
-                    class="product-card-image-{{ ai_gen_id }}"
-                  >
-                {% else %}
-                  <div class="product-card-placeholder-{{ ai_gen_id }}">
-                    {{ 'product-apparel-1' | placeholder_svg_tag }}
-                  </div>
-                {% endif %}
-              </div>
-            </a>
-
-            <div class="product-info-{{ ai_gen_id }}">
-              <h3 class="product-title-{{ ai_gen_id }}">
-                <a href="{{ product.url }}">{{ product.title }}</a>
-              </h3>
-
-              <div class="price-container-{{ ai_gen_id }}">
-                <div class="product-price-wrapper-{{ ai_gen_id }}">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="compare-at-price-{{ ai_gen_id }}"
-                      >₱{{ product.compare_at_price | money_without_currency -}}
-                    </span>
-                  {% endif %}
-                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
-                </div>
-
-                <button
-                  class="add-to-cart-button-{{ ai_gen_id }}"
-                  aria-label="Add {{ product.title | escape }} to cart"
-                  data-product-id="{{ product.id }}"
-                  data-variant-id="{{ product.first_available_variant.id }}"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% if section.settings.plus_category != blank %}
-        {% for product in section.settings.plus_category.products limit: section.settings.products_per_category %}
-          <div class="product-card-{{ ai_gen_id }}" data-category="plus">
-            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
-              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
-                {% if product.featured_image != blank %}
-                  <img
-                    src="{{ product.featured_image | image_url: width: 264 }}"
-                    alt="{{ product.title | escape }}"
-                    loading="lazy"
-                    width="132"
-                    height="175"
-                    class="product-card-image-{{ ai_gen_id }}"
-                  >
-                {% else %}
-                  <div class="product-card-placeholder-{{ ai_gen_id }}">
-                    {{ 'product-apparel-1' | placeholder_svg_tag }}
-                  </div>
-                {% endif %}
-              </div>
-            </a>
-
-            <div class="product-info-{{ ai_gen_id }}">
-              <h3 class="product-title-{{ ai_gen_id }}">
-                <a href="{{ product.url }}">{{ product.title }}</a>
-              </h3>
-
-              <div class="price-container-{{ ai_gen_id }}">
-                <div class="product-price-wrapper-{{ ai_gen_id }}">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="compare-at-price-{{ ai_gen_id }}"
-                      >₱{{ product.compare_at_price | money_without_currency -}}
-                    </span>
-                  {% endif %}
-                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
-                </div>
-
-                <button
-                  class="add-to-cart-button-{{ ai_gen_id }}"
-                  aria-label="Add {{ product.title | escape }} to cart"
-                  data-product-id="{{ product.id }}"
-                  data-variant-id="{{ product.first_available_variant.id }}"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% if section.settings.kids_category != blank %}
-        {% for product in section.settings.kids_category.products limit: section.settings.products_per_category %}
-          <div class="product-card-{{ ai_gen_id }}" data-category="kids">
-            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
-              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
-                {% if product.featured_image != blank %}
-                  <img
-                    src="{{ product.featured_image | image_url: width: 264 }}"
-                    alt="{{ product.title | escape }}"
-                    loading="lazy"
-                    width="132"
-                    height="175"
-                    class="product-card-image-{{ ai_gen_id }}"
-                  >
-                {% else %}
-                  <div class="product-card-placeholder-{{ ai_gen_id }}">
-                    {{ 'product-apparel-1' | placeholder_svg_tag }}
-                  </div>
-                {% endif %}
-              </div>
-            </a>
-
-            <div class="product-info-{{ ai_gen_id }}">
-              <h3 class="product-title-{{ ai_gen_id }}">
-                <a href="{{ product.url }}">{{ product.title }}</a>
-              </h3>
-
-              <div class="price-container-{{ ai_gen_id }}">
-                <div class="product-price-wrapper-{{ ai_gen_id }}">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="compare-at-price-{{ ai_gen_id }}"
-                      >₱{{ product.compare_at_price | money_without_currency -}}
-                    </span>
-                  {% endif %}
-                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
-                </div>
-
-                <button
-                  class="add-to-cart-button-{{ ai_gen_id }}"
-                  aria-label="Add {{ product.title | escape }} to cart"
-                  data-product-id="{{ product.id }}"
-                  data-variant-id="{{ product.first_available_variant.id }}"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% if section.settings.home_category != blank %}
-        {% for product in section.settings.home_category.products limit: section.settings.products_per_category %}
-          <div class="product-card-{{ ai_gen_id }}" data-category="home">
-            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
-              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
-                {% if product.featured_image != blank %}
-                  <img
-                    src="{{ product.featured_image | image_url: width: 264 }}"
-                    alt="{{ product.title | escape }}"
-                    loading="lazy"
-                    width="132"
-                    height="175"
-                    class="product-card-image-{{ ai_gen_id }}"
-                  >
-                {% else %}
-                  <div class="product-card-placeholder-{{ ai_gen_id }}">
-                    {{ 'product-apparel-1' | placeholder_svg_tag }}
-                  </div>
-                {% endif %}
-              </div>
-            </a>
-
-            <div class="product-info-{{ ai_gen_id }}">
-              <h3 class="product-title-{{ ai_gen_id }}">
-                <a href="{{ product.url }}">{{ product.title }}</a>
-              </h3>
-
-              <div class="price-container-{{ ai_gen_id }}">
-                <div class="product-price-wrapper-{{ ai_gen_id }}">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="compare-at-price-{{ ai_gen_id }}"
-                      >₱{{ product.compare_at_price | money_without_currency -}}
-                    </span>
-                  {% endif %}
-                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
-                </div>
-
-                <button
-                  class="add-to-cart-button-{{ ai_gen_id }}"
-                  aria-label="Add {{ product.title | escape }} to cart"
-                  data-product-id="{{ product.id }}"
-                  data-variant-id="{{ product.first_available_variant.id }}"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% if section.settings.beauty_category != blank %}
-        {% for product in section.settings.beauty_category.products limit: section.settings.products_per_category %}
-          <div class="product-card-{{ ai_gen_id }}" data-category="beauty">
-            <a href="{{ product.url }}" class="product-card-link-{{ ai_gen_id }}">
-              <div class="product-card-image-wrapper-{{ ai_gen_id }}">
-                {% if product.featured_image != blank %}
-                  <img
-                    src="{{ product.featured_image | image_url: width: 264 }}"
-                    alt="{{ product.title | escape }}"
-                    loading="lazy"
-                    width="132"
-                    height="175"
-                    class="product-card-image-{{ ai_gen_id }}"
-                  >
-                {% else %}
-                  <div class="product-card-placeholder-{{ ai_gen_id }}">
-                    {{ 'product-apparel-1' | placeholder_svg_tag }}
-                  </div>
-                {% endif %}
-              </div>
-            </a>
-
-            <div class="product-info-{{ ai_gen_id }}">
-              <h3 class="product-title-{{ ai_gen_id }}">
-                <a href="{{ product.url }}">{{ product.title }}</a>
-              </h3>
-
-              <div class="price-container-{{ ai_gen_id }}">
-                <div class="product-price-wrapper-{{ ai_gen_id }}">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="compare-at-price-{{ ai_gen_id }}"
-                      >₱{{ product.compare_at_price | money_without_currency -}}
-                    </span>
-                  {% endif %}
-                  <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
-                </div>
-
-                <button
-                  class="add-to-cart-button-{{ ai_gen_id }}"
-                  aria-label="Add {{ product.title | escape }} to cart"
-                  data-product-id="{{ product.id }}"
-                  data-variant-id="{{ product.first_available_variant.id }}"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %}
-    </div>
-  </div>
-</product-tabs-{{ ai_gen_id }}>
-
+  </product-tabs-{{ ai_gen_id }}>
+</div>
 <script>
   (function () {
     class ProductTabs extends HTMLElement {
@@ -613,8 +231,6 @@
       connectedCallback() {
         this.setupTabButtons();
         this.setupAddToCartButtons();
-
-        // Initialize with all products visible
         this.filterProducts('all');
       }
 
@@ -622,14 +238,8 @@
         this.tabButtons.forEach((button) => {
           button.addEventListener('click', () => {
             const category = button.dataset.category;
-
-            // Update active tab
-            this.tabButtons.forEach((btn) => {
-              btn.classList.remove('active');
-            });
+            this.tabButtons.forEach((btn) => btn.classList.remove('active'));
             button.classList.add('active');
-
-            // Filter products
             this.filterProducts(category);
           });
         });
@@ -637,66 +247,28 @@
 
       filterProducts(category) {
         this.productCards.forEach((card) => {
-          if (category === 'all') {
-            card.classList.remove('hidden-{{ ai_gen_id }}');
-          } else {
-            const cardCategory = card.dataset.category;
-            if (cardCategory === category) {
-              card.classList.remove('hidden-{{ ai_gen_id }}');
-            } else {
-              card.classList.add('hidden-{{ ai_gen_id }}');
-            }
-          }
+          card.classList.toggle('hidden-{{ ai_gen_id }}', category !== 'all' && card.dataset.category !== category);
         });
       }
 
       setupAddToCartButtons() {
         this.addToCartButtons.forEach((button) => {
-          button.addEventListener('click', (event) => {
-            event.preventDefault();
-            const productId = button.dataset.productId;
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
             const variantId = button.dataset.variantId;
-
-            if (variantId) {
-              this.addToCart(variantId);
-            }
+            if (!variantId) return;
+            fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] }),
+            })
+              .then((r) => r.json())
+              .then(() => (window.refreshCart ? window.refreshCart() : location.reload()))
+              .catch((err) => console.error('Cart Error:', err));
           });
         });
       }
-
-      addToCart(variantId) {
-        const data = {
-          items: [
-            {
-              id: variantId,
-              quantity: 1,
-            },
-          ],
-        };
-
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // Refresh mini cart or show notification
-            if (typeof window.refreshCart === 'function') {
-              window.refreshCart();
-            } else {
-              // Fallback to page refresh if no cart update function available
-              window.location.reload();
-            }
-          })
-          .catch((error) => {
-            console.error('Error adding to cart:', error);
-          });
-      }
     }
-
     customElements.define('product-tabs-{{ ai_gen_id }}', ProductTabs);
   })();
 </script>
