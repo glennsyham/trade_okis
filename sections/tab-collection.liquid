@@ -82,6 +82,33 @@
   .collection-product.hidden {
     display: none;
   }
+  .add-to-cart-button-recommended {
+    background-color: {{ section.settings.add_to_cart_bg_color }};
+    color: {{ section.settings.add_to_cart_text_color }};
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 0;
+  }
+  .add-to-cart-button-recommended:hover {
+    background-color: {{ section.settings.add_to_cart_hover_bg_color }};
+  }
+  .add-to-cart-button-recommended svg {
+    width: 18px;
+    height: 18px;
+  }
+  .price__container_tab {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+  }
 {% endstyle %}
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
@@ -167,11 +194,11 @@
                 class="grid__item collection-product {% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
-                  style="                    --animation-order: {{ forloop.index }};"
+                  style="--animation-order: {{ forloop.index }};"
                 {% endif %}
                 data-category="{{ tab }}"
               >
-                {% render 'card-product',
+                {% render 'card-product-tab',
                   card_product: product,
                   media_aspect_ratio: section.settings.image_ratio,
                   image_shape: section.settings.image_shape,
@@ -640,6 +667,24 @@
       "type": "collection",
       "id": "collection_six_category",
       "label": "Collection 6"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_bg_color",
+      "label": "Add to cart button color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_text_color",
+      "label": "Add to cart icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_hover_bg_color",
+      "label": "Add to cart hover color",
+      "default": "#333333"
     }
   ],
   "presets": [
