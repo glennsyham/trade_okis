@@ -1,23 +1,23 @@
 {% assign ai_gen_id = 'aigenblock2f5b290' %}
 
 {% style %}
-  .product-tabs-{{ ai_gen_id }} {
+  .product-tabs-recommended {
     margin: 0 auto;
     padding: 0 20px;
     max-width: 100%;
   }
-  .product-tabs-container-{{ ai_gen_id }} {
+  .product-tabs-container-recommended {
     max-width: {{ section.settings.container_width }}px;
     margin: 0 auto;
   }
-  .tab-container-{{ ai_gen_id }} {
+  .tab-container-recommended {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 30px;
     gap: 8px;
   }
-  .tab-button-{{ ai_gen_id }} {
+  .tab-button-recommended {
     padding: 10px 20px;
     background-color: {{ section.settings.tab_bg_color }};
     color: {{ section.settings.tab_text_color }};
@@ -28,37 +28,37 @@
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
   }
-  .tab-button-{{ ai_gen_id }}.active {
+  .tab-button-recommended.active {
     background-color: {{ section.settings.tab_active_bg_color }};
     color: {{ section.settings.tab_active_text_color }};
   }
-  .tab-button-{{ ai_gen_id }}:hover {
+  .tab-button-recommended:hover {
     background-color: {{ section.settings.tab_hover_bg_color }};
     color: {{ section.settings.tab_hover_text_color }};
   }
-  .products-grid-{{ ai_gen_id }} {
+  .products-grid-recommended {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: {{ section.settings.grid_gap }}px;
     margin: 0 auto;
   }
   @media screen and (min-width: 750px) {
-    .products-grid-{{ ai_gen_id }} {
+    .products-grid-recommended {
       grid-template-columns: repeat(3, 1fr);
     }
   }
   @media screen and (min-width: 990px) {
-    .products-grid-{{ ai_gen_id }} {
+    .products-grid-recommended {
       grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
     }
   }
-  .product-card-{{ ai_gen_id }} {
+  .product-card-recommended {
     display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
   }
-  .product-card-image-wrapper-{{ ai_gen_id }} {
+  .product-card-image-wrapper-recommended {
     position: relative;
     margin-bottom: 12px;
     overflow: hidden;
@@ -66,7 +66,7 @@
     aspect-ratio: 132/175;
     width: 100%;
   }
-  .product-card-image-wrapper-{{ ai_gen_id }} img {
+  .product-card-image-wrapper-recommended img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -75,66 +75,77 @@
     top: 0;
     left: 0;
   }
-  .product-card-image-wrapper-{{ ai_gen_id }} img:first-child {
+  .product-card-image-wrapper-recommended img:first-child {
     opacity: 1;
   }
-  .product-card-image-wrapper-{{ ai_gen_id }} img:nth-child(2) {
+  .product-card-image-wrapper-recommended img:nth-child(2) {
     opacity: 0;
   }
-  .product-card-image-wrapper-{{ ai_gen_id }} .hover-image {
+  .product-card-image-wrapper-recommended .hover-image {
     z-index: 2;
   }
   @media screen and (min-width: 750px) {
-    .product-card-{{ ai_gen_id }}:hover .product-card-image-wrapper-{{ ai_gen_id }} > img:only-child {
+    .product-card-recommended:hover .product-card-image-wrapper-recommended > img:only-child {
       transition: transform var(--duration-long) ease;
     }
 
 
-    .product-card-{{ ai_gen_id }}:hover .product-card-image-wrapper-{{ ai_gen_id }} > img:first-child:only-child {
+    .product-card-recommended:hover .product-card-image-wrapper-recommended > img:first-child:only-child {
       transform: scale(1.03);
     }
 
-    .product-card-{{ ai_gen_id }}:hover .product-card-image-wrapper-{{ ai_gen_id }} > img:first-child:not(:only-child) {
+    .product-card-recommended:hover .product-card-image-wrapper-recommended > img:first-child:not(:only-child) {
       opacity: 0;
     }
 
-    .product-card-{{ ai_gen_id }}:hover .product-card-image-wrapper-{{ ai_gen_id }} > img + img {
+    .product-card-recommended:hover .product-card-image-wrapper-recommended > img + img {
       opacity: 1;
       transition: transform var(--duration-long) ease;
       transform: scale(1.03);
     }
   }
-  .product-info-{{ ai_gen_id }} {
+  .product-info-recommended {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     gap: 6px;
   }
-  .product-title-{{ ai_gen_id }} {
+  .product-title-recommended {
     font-size: {{ section.settings.title_font_size }}px;
     font-weight: 500;
     margin: 0;
     color: {{ section.settings.title_color }};
     line-height: 1.3;
   }
-  .price-container-{{ ai_gen_id }} {
+
+
+  .product-title-recommended a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .product-title-recommended a:hover {
+    text-decoration: underline;
+  }
+
+  .price-container-recommended {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: auto;
   }
-  .product-price-{{ ai_gen_id }} {
+  .product-price-recommended {
     font-size: {{ section.settings.price_font_size }}px;
     font-weight: 600;
     color: {{ section.settings.price_color }};
   }
-  .compare-at-price-{{ ai_gen_id }} {
+  .compare-at-price-recommended {
     text-decoration: line-through;
     color: {{ section.settings.compare_price_color }};
     margin-right: 8px;
     font-size: {{ section.settings.price_font_size | minus: 2 }}px;
   }
-  .add-to-cart-button-{{ ai_gen_id }} {
+  .add-to-cart-button-recommended {
     background-color: {{ section.settings.add_to_cart_bg_color }};
     color: {{ section.settings.add_to_cart_text_color }};
     border: none;
@@ -148,34 +159,34 @@
     transition: background-color 0.3s;
     padding: 0;
   }
-  .add-to-cart-button-{{ ai_gen_id }}:hover {
+  .add-to-cart-button-recommended:hover {
     background-color: {{ section.settings.add_to_cart_hover_bg_color }};
   }
-  .add-to-cart-button-{{ ai_gen_id }} svg {
+  .add-to-cart-button-recommended svg {
     width: 18px;
     height: 18px;
   }
-  .section-title-{{ ai_gen_id }} {
+  .section-title-recommended {
     text-align: center;
     margin-bottom: 20px;
     font-size: {{ section.settings.heading_font_size }}px;
     font-weight: 600;
     color: {{ section.settings.heading_color }};
   }
-  .hidden-{{ ai_gen_id }} {
+  .hidden-recommended {
     display: none;
   }
 {% endstyle %}
 <div class="page-width">
-  <product-tabs-{{ ai_gen_id }} class="product-tabs-{{ ai_gen_id }}" {{ section.shopify_attributes }}>
-    <div class="product-tabs-container-{{ ai_gen_id }}">
+  <product-tabs-recommended class="product-tabs-recommended" {{ section.shopify_attributes }}>
+    <div class="product-tabs-container-recommended">
       {% if section.settings.heading != blank %}
-        <h2 class="section-title-{{ ai_gen_id }}">{{ section.settings.heading }}</h2>
+        <h2 class="section-title-recommended">{{ section.settings.heading }}</h2>
       {% endif %}
       {% assign all_category = 'women,men,plus,kids,home,beauty' | split: ',' %}
 
-      <div class="tab-container-{{ ai_gen_id }}">
-        <button class="tab-button-{{ ai_gen_id }} active" data-category="all">
+      <div class="tab-container-recommended">
+        <button class="tab-button-recommended active" data-category="all">
           {{ section.settings.view_all_text }}
         </button>
 
@@ -186,20 +197,20 @@
           {% assign collection = section.settings[text_key] %}
           {% assign label = section.settings[text_label] %}
           {% if collection != blank %}
-            <button class="tab-button-{{ ai_gen_id }}" data-category="{{ cat }}">{{ label }}</button>
+            <button class="tab-button-recommended" data-category="{{ cat }}">{{ label }}</button>
           {% endif %}
         {% endfor %}
       </div>
 
-      <div class="products-grid-{{ ai_gen_id }}">
+      <div class="products-grid-recommended">
         {% for cat in all_category %}
           {% assign text_key = cat | append: '_category' %}
           {% assign collection = section.settings[text_key] %}
           {% if collection != blank %}
             {% for product in collection.products limit: section.settings.products_per_category %}
-              <div class="product-card-{{ ai_gen_id }} mobile--hover-effect" data-category="{{ cat }}">
+              <div class="product-card-recommended mobile--hover-effect" data-category="{{ cat }}">
                 <a href="{{ product.url }}">
-                  <div class="product-card-image-wrapper-{{ ai_gen_id }} ">
+                  <div class="product-card-image-wrapper-recommended ">
                     {% if product.featured_image %}
                       <img
                         src="{{ product.featured_image | image_url: width: 264 }}"
@@ -207,10 +218,10 @@
                         loading="lazy"
                         width="132"
                         height="175"
-                        class="product-card-image-{{ ai_gen_id }}"
+                        class="product-card-image-recommended"
                       >
                     {% else %}
-                      <div class="product-card-placeholder-{{ ai_gen_id }}">
+                      <div class="product-card-placeholder-recommended">
                         {{ 'product-apparel-1' | placeholder_svg_tag }}
                       </div>
                     {% endif %}
@@ -222,26 +233,26 @@
                         loading="lazy"
                         width="132"
                         height="175"
-                        class="product-card-image-{{ ai_gen_id }}"
+                        class="product-card-image-recommended"
                       >
                     {% endif %}
                   </div>
                 </a>
-                <div class="product-info-{{ ai_gen_id }}">
-                  <h3 class="product-title-{{ ai_gen_id }}">
+                <div class="product-info-recommended">
+                  <h3 class="product-title-recommended">
                     <a href="{{ product.url }}">{{ product.title }}</a>
                   </h3>
-                  <div class="price-container-{{ ai_gen_id }}">
+                  <div class="price-container-recommended">
                     <div>
                       {% if product.compare_at_price > product.price %}
-                        <span class="compare-at-price-{{ ai_gen_id }}"
+                        <span class="compare-at-price-recommended"
                           >₱{{ product.compare_at_price | money_without_currency -}}
                         </span>
                       {% endif %}
-                      <span class="product-price-{{ ai_gen_id }}">₱{{ product.price | money_without_currency }}</span>
+                      <span class="product-price-recommended">₱{{ product.price | money_without_currency }}</span>
                     </div>
                     <button
-                      class="add-to-cart-button-{{ ai_gen_id }}"
+                      class="add-to-cart-button-recommended"
                       aria-label="Add {{ product.title }} to cart"
                       data-product-id="{{ product.id }}"
                       data-variant-id="{{ product.first_available_variant.id }}"
@@ -256,16 +267,16 @@
         {% endfor %}
       </div>
     </div>
-  </product-tabs-{{ ai_gen_id }}>
+  </product-tabs-recommended>
 </div>
 <script>
   (function () {
     class ProductTabs extends HTMLElement {
       constructor() {
         super();
-        this.tabButtons = this.querySelectorAll('.tab-button-{{ ai_gen_id }}');
-        this.productCards = this.querySelectorAll('.product-card-{{ ai_gen_id }}');
-        this.addToCartButtons = this.querySelectorAll('.add-to-cart-button-{{ ai_gen_id }}');
+        this.tabButtons = this.querySelectorAll('.tab-button-recommended');
+        this.productCards = this.querySelectorAll('.product-card-recommended');
+        this.addToCartButtons = this.querySelectorAll('.add-to-cart-button-recommended');
       }
 
       connectedCallback() {
@@ -287,7 +298,7 @@
 
       filterProducts(category) {
         this.productCards.forEach((card) => {
-          card.classList.toggle('hidden-{{ ai_gen_id }}', category !== 'all' && card.dataset.category !== category);
+          card.classList.toggle('hidden-recommended', category !== 'all' && card.dataset.category !== category);
         });
       }
 
@@ -309,7 +320,7 @@
         });
       }
     }
-    customElements.define('product-tabs-{{ ai_gen_id }}', ProductTabs);
+    customElements.define('product-tabs-recommended', ProductTabs);
   })();
 </script>
 
