@@ -42,9 +42,9 @@
     "inputs_shadow_horizontal_offset": 0,
     "inputs_shadow_vertical_offset": 4,
     "inputs_shadow_blur": 5,
-    "card_style": "card",
+    "card_style": "standard",
     "card_image_padding": 4,
-    "card_text_alignment": "right",
+    "card_text_alignment": "left",
     "card_color_scheme": "scheme-6bd832ab-71d4-4873-a67e-8c52576ea6ec",
     "card_border_thickness": 0,
     "card_border_opacity": 15,
@@ -181,11 +181,6 @@
           "button_vertical_position": "highest",
           "greeting_message": "Our O'kis Team are here to assist you!"
         }
-      },
-      "6248343940173316906": {
-        "type": "shopify://apps/seoant-sticky-cart/blocks/sticky-cart/bba5bb0a-ae9e-4ec9-8cd1-5e9d3f32ebbe",
-        "disabled": false,
-        "settings": {}
       }
     },
     "color_schemes": {
