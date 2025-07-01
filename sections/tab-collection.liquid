@@ -160,12 +160,6 @@
 
           {% if coll != blank %}
             {% assign skip_card_product_styles = false %}
-            {% comment %}
-              {%- if section.settings.collection.products.size > 0 -%}
-                {% paginate section.settings.collection.products by section.settings.products_to_show %}
-
-                    {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-            {% endcomment %}
 
             {%- for product in coll.products limit: section.settings.products_per_category -%}
               <li
@@ -193,39 +187,6 @@
             {%- endfor -%}
           {% endif %}
         {% endfor %}
-        {% comment %}
-          {% endpaginate %}
-        {% endcomment %}
-        {% comment %}
-          {%- else -%}
-            {%- for i in (1..section.settings.columns_desktop) -%}
-              <li
-                class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index }};"
-                {% endif %}
-              >
-                {% liquid
-                  assign ridx = forloop.rindex
-                  case ridx
-                    when 5
-                      assign ridx = 1
-                    when 6
-                      assign ridx = 2
-                  endcase
-                %}
-                {%- assign placeholder_image = 'product-apparel-' | append: ridx -%}
-                {% render 'card-product',
-                  show_vendor: section.settings.show_vendor,
-                  media_aspect_ratio: section.settings.image_ratio,
-                  image_shape: section.settings.image_shape,
-                  placeholder_image: placeholder_image
-                %}
-              </li>
-            {%- endfor -%}
-          {%- endif -%}
-        {% endcomment %}
       </ul>
       {%- if show_mobile_slider or show_desktop_slider -%}
         <div class="slider-buttons">
