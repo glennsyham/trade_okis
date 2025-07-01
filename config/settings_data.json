@@ -186,30 +186,6 @@
         "type": "shopify://apps/seoant-sticky-cart/blocks/sticky-cart/bba5bb0a-ae9e-4ec9-8cd1-5e9d3f32ebbe",
         "disabled": false,
         "settings": {}
-      },
-      "1923486770171284578": {
-        "type": "shopify://apps/simplee-memberships/blocks/app-block/f502d2a4-3112-42c9-ad39-89fb8aca93a7",
-        "disabled": true,
-        "settings": {
-          "text_color": "#2f3537",
-          "widget_background_color": "#ffffff",
-          "background_color": "#2e90fa",
-          "description_color": "#5b5f62",
-          "renewal_color": "#9fa9ad",
-          "heading_color": "#2f3537",
-          "button_color": "#667085",
-          "selected_button_color": "#ffffff",
-          "renewal_text": "/ Renewal",
-          "trial_days_text": "[initial_price] for [count] days, then [regular_price]",
-          "trial_orders_text": "[initial_price] for [count] orders, then [regular_price]",
-          "life_time_text": "Lifetime Access",
-          "simplee_widget_type": "widget_1",
-          "css": "#Simplee-Product_widget{}",
-          "link_color": "#000000",
-          "link_text": "My Membership",
-          "link_css": ".simplee-membership-link{}",
-          "link_icon_size": 16
-        }
       }
     },
     "color_schemes": {
