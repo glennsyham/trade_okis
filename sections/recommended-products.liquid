@@ -176,6 +176,13 @@
   .hidden-recommended {
     display: none;
   }
+
+   video {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 {% endstyle %}
 <div class="page-width">
   <product-tabs-recommended class="product-tabs-recommended" {{ section.shopify_attributes }}>
@@ -208,33 +215,54 @@
           {% assign collection = section.settings[text_key] %}
           {% if collection != blank %}
             {% for product in collection.products limit: section.settings.products_per_category %}
+              {% assign media_type = 'image' %}
+              {% assign media_src = product.featured_media.preview_image | img_url: '600x' %}
+
+              {% for media in product.media %}
+                {% if media.media_type == 'video' or media.media_type == 'external_video' %}
+                  {% assign media_type = media.media_type %}
+                  {% assign media_src = media.sources[1].url %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
               <div class="product-card-recommended mobile--hover-effect" data-category="{{ cat }}">
                 <a href="{{ product.url }}">
                   <div class="product-card-image-wrapper-recommended ">
-                    {% if product.featured_image %}
-                      <img
-                        src="{{ product.featured_image | image_url: width: 264 }}"
-                        alt="{{ product.title }}"
-                        loading="lazy"
-                        width="132"
-                        height="175"
-                        class="product-card-image-recommended"
-                      >
+                    {% if media_type == 'video' or media_type == 'external_video' %}
+                      <video
+                        class="ai-product-showcase__media-{{ ai_gen_id }}"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        src="{{ media_src }}"
+                      ></video>
                     {% else %}
-                      <div class="product-card-placeholder-recommended">
-                        {{ 'product-apparel-1' | placeholder_svg_tag }}
-                      </div>
-                    {% endif %}
+                      {% if product.featured_image %}
+                        <img
+                          src="{{ product.featured_image | image_url: width: 264 }}"
+                          alt="{{ product.title }}"
+                          loading="lazy"
+                          width="132"
+                          height="175"
+                          class="product-card-image-recommended"
+                        >
+                      {% else %}
+                        <div class="product-card-placeholder-recommended">
+                          {{ 'product-apparel-1' | placeholder_svg_tag }}
+                        </div>
+                      {% endif %}
 
-                    {%- if product.media[1] != null %}
-                      <img
-                        src="{{ product.media[1] | image_url: width: 264 }}"
-                        alt="{{ product.media[1].alt}}"
-                        loading="lazy"
-                        width="132"
-                        height="175"
-                        class="product-card-image-recommended"
-                      >
+                      {%- if product.media[1] != null %}
+                        <img
+                          src="{{ product.media[1] | image_url: width: 264 }}"
+                          alt="{{ product.media[1].alt}}"
+                          loading="lazy"
+                          width="132"
+                          height="175"
+                          class="product-card-image-recommended"
+                        >
+                      {% endif %}
                     {% endif %}
                   </div>
                 </a>
