@@ -76,20 +76,15 @@
     left: 0;
   }
   .product-card-image-wrapper-{{ ai_gen_id }} img:first-child {
-    position: relative;
-    z-index: 1;
+    opacity: 1;
+  }
+  .product-card-image-wrapper-{{ ai_gen_id }} img:nth-child(2) {
+    opacity: 0;
+  }
+  .product-card-image-wrapper-{{ ai_gen_id }} .hover-image {
+    z-index: 2;
   }
   @media screen and (min-width: 750px) {
-    /*
-    .product-card-image-wrapper-{{ ai_gen_id }} img:last-child {
-      opacity: 0;
-    }
-    .product-card-{{ ai_gen_id }}:hover .product-card-image-wrapper-{{ ai_gen_id }} img:last-child {
-      opacity: 1;
-      z-index: 2;
-    }
-    */
-
     .product-card-{{ ai_gen_id }}:hover .product-card-image-wrapper-{{ ai_gen_id }} > img:only-child {
       transition: transform var(--duration-long) ease;
     }
@@ -107,15 +102,6 @@
       opacity: 1;
       transition: transform var(--duration-long) ease;
       transform: scale(1.03);
-    }
-  }
-  @media screen and (max-width: 749px) {
-    .product-card-image-wrapper-{{ ai_gen_id }} img:last-child {
-      opacity: 1;
-      position: relative;
-    }
-    .product-card-image-wrapper-{{ ai_gen_id }} img:first-child {
-      margin-bottom: 4px;
     }
   }
   .product-info-{{ ai_gen_id }} {
@@ -211,7 +197,7 @@
           {% assign collection = section.settings[text_key] %}
           {% if collection != blank %}
             {% for product in collection.products limit: section.settings.products_per_category %}
-              <div class="product-card-{{ ai_gen_id }}" data-category="{{ cat }}">
+              <div class="product-card-{{ ai_gen_id }} mobile--hover-effect" data-category="{{ cat }}">
                 <a href="{{ product.url }}">
                   <div class="product-card-image-wrapper-{{ ai_gen_id }} ">
                     {% if product.featured_image %}

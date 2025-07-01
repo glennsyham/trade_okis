@@ -63,6 +63,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth < 768) {
+    document.querySelectorAll('.mobile--hover-effect').forEach(mediaContainer => {
+      const images = mediaContainer.querySelectorAll('img');
+      if (images.length < 2) return;
+
+      let index = 0;
+
+      setInterval(() => {
+        images.forEach((img, i) => {
+          img.style.opacity = i === index ? '1' : '0';
+          img.style.transition = 'opacity 0.4s ease';
+        });
+
+        index = (index + 1) % images.length;
+      }, 2000);
+    });
+  }
+});
 /* Globo Mega Menu */
 document.addEventListener("DOMContentLoaded", function () {
   let attempts = 0;
