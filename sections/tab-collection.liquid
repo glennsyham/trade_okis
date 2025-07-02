@@ -118,6 +118,13 @@
     position: relative;
     z-index: 2;
   }
+
+   video {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+  }
 {% endstyle %}
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
@@ -140,19 +147,6 @@
 
   assign all_tabs = 'collection_one,collection_two,collection_three,collection_four,collection_five,collection_six' | split: ','
 -%}
-
-<div class="tabs-header page-width">
-  <button class="tab-button active" data-category="all">{{ section.settings.view_all_text }}</button>
-  {% for tab in all_tabs %}
-    {% assign text_key = tab | append: '_text' %}
-    {% assign label = section.settings[text_key] %}
-    {% assign collection_key = tab | append: '_category' %}
-    {% assign coll = section.settings[collection_key] %}
-    {% if coll != blank %}
-      <button class="tab-button" data-category="{{ tab }}">{{ label }}</button>
-    {% endif %}
-  {% endfor %}
-</div>
 
 <div
   class="color-{{ section.settings.color_scheme }} isolate gradient {{ section.settings.linear_bg_class }}"
@@ -180,6 +174,18 @@
           {%- endif %}
         </div>
       {%- endif -%}
+    </div>
+    <div class="tabs-header page-width">
+      <button class="tab-button active" data-category="all">{{ section.settings.view_all_text }}</button>
+      {% for tab in all_tabs %}
+        {% assign text_key = tab | append: '_text' %}
+        {% assign label = section.settings[text_key] %}
+        {% assign collection_key = tab | append: '_category' %}
+        {% assign coll = section.settings[collection_key] %}
+        {% if coll != blank %}
+          <button class="tab-button" data-category="{{ tab }}">{{ label }}</button>
+        {% endif %}
+      {% endfor %}
     </div>
 
     <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
