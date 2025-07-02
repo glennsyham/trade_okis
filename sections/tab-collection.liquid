@@ -109,6 +109,15 @@
       justify-content: space-between;
       margin-top: auto;
   }
+
+  .tab_price__regular {
+      font-weight: bold;
+  }
+
+  .add-to-cart-wrapper {
+    position: relative;
+    z-index: 2;
+  }
 {% endstyle %}
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
@@ -278,6 +287,32 @@
         products.forEach((p) => {
           p.classList.toggle('hidden', cat !== 'all' && p.dataset.category !== cat);
         });
+      });
+    });
+
+    document.querySelectorAll('.add-to-cart-button-recommended').forEach((button) => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const variantId = button.dataset.variantId;
+        if (!variantId) {
+          alert('⚠️ No variant ID found.');
+          return;
+        }
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [{ id: variantId, quantity: 1 }],
+          }),
+        })
+          .then(() => (window.refreshCart ? window.refreshCart() : location.reload()))
+          .catch((err) => {
+            console.error('❌ Add to cart failed:', err);
+            alert('❌ Failed to add item to cart.');
+          });
       });
     });
   });
