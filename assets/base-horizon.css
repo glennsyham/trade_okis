@@ -627,7 +627,7 @@ dialog {
 }
 
 @media screen and (min-width: 750px) {
-  .grid {
+  .section-horizon .grid {
     display: grid;
     gap: 0;
     grid-template-columns:
@@ -638,7 +638,7 @@ dialog {
 }
 
 @media screen and (min-width: 1400px) {
-  .grid {
+  .section-horizon .grid {
     grid-template-columns:
       1fr repeat(
         var(--centered-column-number),
@@ -1045,7 +1045,7 @@ dialog {
   }
 }
 
-.product-grid {
+.section-horizon .product-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--product-grid-gap);
@@ -1055,7 +1055,7 @@ dialog {
 }
 
 @media screen and (min-width: 750px) {
-  .product-grid {
+  .section-horizon .product-grid {
     grid-template-columns: var(--product-grid-columns-desktop);
   }
 }
@@ -1205,7 +1205,7 @@ ul[product-grid-view="zoom-out"] .product-grid__card > * {
       }
     }
 
-    .product-grid {
+    .section-horizon .product-grid {
       view-transition-name: product-grid;
     }
 
