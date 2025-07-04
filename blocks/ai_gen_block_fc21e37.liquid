@@ -1,0 +1,993 @@
+{% assign ai_gen_id = block.id | replace: '_' | downcase %}
+
+{% style %}
+  .category-scroll-wrapper-{{ ai_gen_id }} {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    gap: {{ block.settings.gap }}px;
+    padding: 0 16px;
+  }
+
+  .category-scroll-wrapper-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-column-{{ ai_gen_id }} {
+    flex: 0 0 calc(100% / 4.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-snap-align: start;
+    gap: {{ block.settings.gap }}px;
+  }
+
+  .category-item-{{ ai_gen_id }} {
+    text-align: center;
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+  }
+
+  .category-image-wrapper-{{ ai_gen_id }} {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: {{ block.settings.image_background }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    margin: 0 auto;
+  }
+
+  .category-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .category-name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media screen and (min-width: 750px) {
+    .category-scroll-wrapper-{{ ai_gen_id }} {
+      flex-wrap: wrap;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .category-column-{{ ai_gen_id }} {
+      flex: 0 0 auto;
+      width: auto;
+      scroll-snap-align: none;
+    }
+  }
+{% endstyle %}
+
+<div class="page-width" style="padding-top: 30px;padding-bottom: 30px;">
+  <div class="category-scroll-wrapper-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+    {% assign counter = 0 %}
+    {% for i in (1..30) %}
+      {% assign enabled = 'category_' | append: i | append: '_enabled' %}
+      {% assign title = 'category_' | append: i | append: '_title' %}
+      {% assign image = 'category_' | append: i | append: '_image' %}
+      {% assign link = 'category_' | append: i | append: '_link' %}
+
+      {% if block.settings[enabled] %}
+        {% assign counter = counter | plus: 1 %}
+        {% assign mod_check = counter | modulo: 2 %}
+
+        {% if mod_check == 1 %}
+          <div class="category-column-{{ ai_gen_id }}">
+        {% endif %}
+
+        <a href="{{ block.settings[link] }}" class="category-item-{{ ai_gen_id }}">
+          <div class="category-image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings[image] %}
+              <img
+                src="{{ block.settings[image] | image_url: width: 164 }}"
+                alt="{{ block.settings[title] }}"
+                class="category-image-{{ ai_gen_id }}"
+                width="82"
+                height="82"
+                loading="lazy"
+              >
+            {% else %}
+              <div class="category-image-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="category-name-{{ ai_gen_id }}">{{ block.settings[title] }}</div>
+        </a>
+
+        {% if mod_check == 0 %}
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Category Grid",
+  "tag": null,
+  "class": "category-grid-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        {
+          "value": "6",
+          "label": "6"
+        },
+        {
+          "value": "7",
+          "label": "7"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "9",
+          "label": "9"
+        },
+        {
+          "value": "10",
+          "label": "10"
+        }
+      ],
+      "default": "10"
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "Columns on tablet",
+      "options": [
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        },
+        {
+          "value": "7",
+          "label": "7"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        }
+      ],
+      "default": "6"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Space between items",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "image_background",
+      "label": "Image background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "header",
+      "content": "Categories (1-10)"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_1_enabled",
+      "label": "Enable category 1",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_1_title",
+      "label": "Category 1 name",
+      "default": "Women"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_1_image",
+      "label": "Category 1 image"
+    },
+    {
+      "type": "url",
+      "id": "category_1_link",
+      "label": "Category 1 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_2_enabled",
+      "label": "Enable category 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_2_title",
+      "label": "Category 2 name",
+      "default": "Men"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_2_image",
+      "label": "Category 2 image"
+    },
+    {
+      "type": "url",
+      "id": "category_2_link",
+      "label": "Category 2 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_3_enabled",
+      "label": "Enable category 3",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_3_title",
+      "label": "Category 3 name",
+      "default": "Tops"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_3_image",
+      "label": "Category 3 image"
+    },
+    {
+      "type": "url",
+      "id": "category_3_link",
+      "label": "Category 3 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_4_enabled",
+      "label": "Enable category 4",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_4_title",
+      "label": "Category 4 name",
+      "default": "Bottoms"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_4_image",
+      "label": "Category 4 image"
+    },
+    {
+      "type": "url",
+      "id": "category_4_link",
+      "label": "Category 4 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_5_enabled",
+      "label": "Enable category 5",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_5_title",
+      "label": "Category 5 name",
+      "default": "Accessories"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_5_image",
+      "label": "Category 5 image"
+    },
+    {
+      "type": "url",
+      "id": "category_5_link",
+      "label": "Category 5 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_6_enabled",
+      "label": "Enable category 6",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_6_title",
+      "label": "Category 6 name",
+      "default": "Shoes"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_6_image",
+      "label": "Category 6 image"
+    },
+    {
+      "type": "url",
+      "id": "category_6_link",
+      "label": "Category 6 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_7_enabled",
+      "label": "Enable category 7",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_7_title",
+      "label": "Category 7 name",
+      "default": "Home & Living"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_7_image",
+      "label": "Category 7 image"
+    },
+    {
+      "type": "url",
+      "id": "category_7_link",
+      "label": "Category 7 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_8_enabled",
+      "label": "Enable category 8",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_8_title",
+      "label": "Category 8 name",
+      "default": "Beauty"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_8_image",
+      "label": "Category 8 image"
+    },
+    {
+      "type": "url",
+      "id": "category_8_link",
+      "label": "Category 8 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_9_enabled",
+      "label": "Enable category 9",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_9_title",
+      "label": "Category 9 name",
+      "default": "Kids"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_9_image",
+      "label": "Category 9 image"
+    },
+    {
+      "type": "url",
+      "id": "category_9_link",
+      "label": "Category 9 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_10_enabled",
+      "label": "Enable category 10",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_10_title",
+      "label": "Category 10 name",
+      "default": "Sale"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_10_image",
+      "label": "Category 10 image"
+    },
+    {
+      "type": "url",
+      "id": "category_10_link",
+      "label": "Category 10 link"
+    },
+    {
+      "type": "header",
+      "content": "Categories (11-20)"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_11_enabled",
+      "label": "Enable category 11",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_11_title",
+      "label": "Category 11 name",
+      "default": "Jewelry"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_11_image",
+      "label": "Category 11 image"
+    },
+    {
+      "type": "url",
+      "id": "category_11_link",
+      "label": "Category 11 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_12_enabled",
+      "label": "Enable category 12",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_12_title",
+      "label": "Category 12 name",
+      "default": "Watches"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_12_image",
+      "label": "Category 12 image"
+    },
+    {
+      "type": "url",
+      "id": "category_12_link",
+      "label": "Category 12 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_13_enabled",
+      "label": "Enable category 13",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_13_title",
+      "label": "Category 13 name",
+      "default": "Bags"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_13_image",
+      "label": "Category 13 image"
+    },
+    {
+      "type": "url",
+      "id": "category_13_link",
+      "label": "Category 13 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_14_enabled",
+      "label": "Enable category 14",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_14_title",
+      "label": "Category 14 name",
+      "default": "Sunglasses"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_14_image",
+      "label": "Category 14 image"
+    },
+    {
+      "type": "url",
+      "id": "category_14_link",
+      "label": "Category 14 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_15_enabled",
+      "label": "Enable category 15",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_15_title",
+      "label": "Category 15 name",
+      "default": "Hats"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_15_image",
+      "label": "Category 15 image"
+    },
+    {
+      "type": "url",
+      "id": "category_15_link",
+      "label": "Category 15 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_16_enabled",
+      "label": "Enable category 16",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_16_title",
+      "label": "Category 16 name",
+      "default": "Scarves"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_16_image",
+      "label": "Category 16 image"
+    },
+    {
+      "type": "url",
+      "id": "category_16_link",
+      "label": "Category 16 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_17_enabled",
+      "label": "Enable category 17",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_17_title",
+      "label": "Category 17 name",
+      "default": "Belts"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_17_image",
+      "label": "Category 17 image"
+    },
+    {
+      "type": "url",
+      "id": "category_17_link",
+      "label": "Category 17 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_18_enabled",
+      "label": "Enable category 18",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_18_title",
+      "label": "Category 18 name",
+      "default": "Gloves"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_18_image",
+      "label": "Category 18 image"
+    },
+    {
+      "type": "url",
+      "id": "category_18_link",
+      "label": "Category 18 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_19_enabled",
+      "label": "Enable category 19",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_19_title",
+      "label": "Category 19 name",
+      "default": "Socks"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_19_image",
+      "label": "Category 19 image"
+    },
+    {
+      "type": "url",
+      "id": "category_19_link",
+      "label": "Category 19 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_20_enabled",
+      "label": "Enable category 20",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_20_title",
+      "label": "Category 20 name",
+      "default": "Underwear"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_20_image",
+      "label": "Category 20 image"
+    },
+    {
+      "type": "url",
+      "id": "category_20_link",
+      "label": "Category 20 link"
+    },
+    {
+      "type": "header",
+      "content": "Categories (21-30)"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_21_enabled",
+      "label": "Enable category 21",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_21_title",
+      "label": "Category 21 name",
+      "default": "Sleepwear"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_21_image",
+      "label": "Category 21 image"
+    },
+    {
+      "type": "url",
+      "id": "category_21_link",
+      "label": "Category 21 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_22_enabled",
+      "label": "Enable category 22",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_22_title",
+      "label": "Category 22 name",
+      "default": "Swimwear"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_22_image",
+      "label": "Category 22 image"
+    },
+    {
+      "type": "url",
+      "id": "category_22_link",
+      "label": "Category 22 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_23_enabled",
+      "label": "Enable category 23",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_23_title",
+      "label": "Category 23 name",
+      "default": "Activewear"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_23_image",
+      "label": "Category 23 image"
+    },
+    {
+      "type": "url",
+      "id": "category_23_link",
+      "label": "Category 23 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_24_enabled",
+      "label": "Enable category 24",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_24_title",
+      "label": "Category 24 name",
+      "default": "Outerwear"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_24_image",
+      "label": "Category 24 image"
+    },
+    {
+      "type": "url",
+      "id": "category_24_link",
+      "label": "Category 24 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_25_enabled",
+      "label": "Enable category 25",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_25_title",
+      "label": "Category 25 name",
+      "default": "Dresses"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_25_image",
+      "label": "Category 25 image"
+    },
+    {
+      "type": "url",
+      "id": "category_25_link",
+      "label": "Category 25 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_26_enabled",
+      "label": "Enable category 26",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_26_title",
+      "label": "Category 26 name",
+      "default": "Skirts"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_26_image",
+      "label": "Category 26 image"
+    },
+    {
+      "type": "url",
+      "id": "category_26_link",
+      "label": "Category 26 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_27_enabled",
+      "label": "Enable category 27",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_27_title",
+      "label": "Category 27 name",
+      "default": "Suits"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_27_image",
+      "label": "Category 27 image"
+    },
+    {
+      "type": "url",
+      "id": "category_27_link",
+      "label": "Category 27 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_28_enabled",
+      "label": "Enable category 28",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_28_title",
+      "label": "Category 28 name",
+      "default": "Ties"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_28_image",
+      "label": "Category 28 image"
+    },
+    {
+      "type": "url",
+      "id": "category_28_link",
+      "label": "Category 28 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_29_enabled",
+      "label": "Enable category 29",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_29_title",
+      "label": "Category 29 name",
+      "default": "Fragrances"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_29_image",
+      "label": "Category 29 image"
+    },
+    {
+      "type": "url",
+      "id": "category_29_link",
+      "label": "Category 29 link"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_30_enabled",
+      "label": "Enable category 30",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "category_30_title",
+      "label": "Category 30 name",
+      "default": "Gifts"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_30_image",
+      "label": "Category 30 image"
+    },
+    {
+      "type": "url",
+      "id": "category_30_link",
+      "label": "Category 30 link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Grid"
+    }
+  ]
+}
+{% endschema %}
