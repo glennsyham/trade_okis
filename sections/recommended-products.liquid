@@ -201,7 +201,7 @@
 
           {% assign collection = section.settings[text_key] %}
           {% assign label = section.settings[text_label] %}
-          {% if collection != blank %}
+          {% if collection != blank and label != blank %}
             <button class="tab-button-recommended" data-category="{{ cat }}">{{ label }}</button>
           {% endif %}
         {% endfor %}
